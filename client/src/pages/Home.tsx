@@ -148,14 +148,15 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-white">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b border-border">
-        <div className="container flex items-center justify-between h-16">
-          <div className="text-xl font-bold text-primary">From Life To Lines</div>
-          <div className="flex gap-4">
-            <Button variant="ghost">功能</Button>
-            <Button variant="ghost">定價</Button>
-            <Button variant="ghost">案例</Button>
-            <Button>免費試用</Button>
+        <div className="container flex items-center justify-between h-14 lg:h-16 px-4 lg:px-0">
+          <div className="text-lg lg:text-xl font-bold text-primary truncate">From Life To Lines</div>
+          <div className="hidden lg:flex gap-4">
+            <Button variant="ghost" className="text-sm">功能</Button>
+            <Button variant="ghost" className="text-sm">定價</Button>
+            <Button variant="ghost" className="text-sm">案例</Button>
+            <Button className="text-sm">免費試用</Button>
           </div>
+          <Button className="lg:hidden text-sm">免費試用</Button>
         </div>
       </nav>
 
@@ -171,20 +172,20 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
           
-          <div className="container relative z-10 text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <div className="container relative z-10 text-center text-white px-4 py-12 lg:py-0">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight">
               24/7 AI 客服
               <br />
               <span className="text-orange-400">30 分鐘快速上線</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-2xl mb-6 lg:mb-8 text-gray-100 max-w-2xl mx-auto">
               為中小企業打造的無代碼 AI 預約客服系統。降低 70-80% 客服成本，提升預約轉化率 20-30%。
             </p>
-            <div className="flex gap-4 justify-center">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white w-full sm:w-auto">
                 免費試用 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white/20">
+              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white/20 w-full sm:w-auto">
                 預約演示
               </Button>
             </div>
@@ -192,13 +193,13 @@ export default function Home() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 bg-gray-50">
-          <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-4">為什麼選擇我們？</h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20 bg-gray-50">
+          <div className="container px-4 lg:px-0">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">為什麼選擇我們？</h2>
+            <p className="text-center text-gray-600 mb-8 lg:mb-12 max-w-2xl mx-auto text-sm lg:text-base">
               6 個核心特性，幫助中小企業快速實現 AI 客服轉型
             </p>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
@@ -220,14 +221,14 @@ export default function Home() {
         </section>
 
         {/* Case Studies */}
-        <section className="py-20">
-          <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-4">客戶成功案例</h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20">
+          <div className="container px-4 lg:px-0">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">客戶成功案例</h2>
+            <p className="text-center text-gray-600 mb-8 lg:mb-12 max-w-2xl mx-auto text-sm lg:text-base">
               來自不同行業的真實客戶，已透過 AI Agent 實現業績提升
             </p>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {caseStudies.map((study, idx) => (
                 <Card key={idx} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setCurrentCaseStudy(idx)}>
                   <div className="relative h-48 overflow-hidden bg-gray-200">
@@ -258,45 +259,45 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section className="py-20 bg-gray-50">
-          <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-4">簡單透明的定價</h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20 bg-gray-50">
+          <div className="container px-4 lg:px-0">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">簡單透明的定價</h2>
+            <p className="text-center text-gray-600 mb-8 lg:mb-12 max-w-2xl mx-auto text-sm lg:text-base">
               選擇適合您的方案，隨時升級或降級
             </p>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 lg:auto-rows-max">
               {pricingPlans.map((plan, idx) => (
                 <Card
                   key={idx}
                   className={`relative transition-all ${
                     plan.highlighted
-                      ? "md:scale-105 border-primary shadow-lg"
+                      ? "lg:scale-105 border-primary shadow-lg"
                       : "border-border"
                   }`}
                 >
                   {plan.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
                       推薦方案
                     </div>
                   )}
                   <CardHeader>
-                    <CardTitle>{plan.name}</CardTitle>
-                    <CardDescription>{plan.description}</CardDescription>
+                    <CardTitle className="text-lg lg:text-xl">{plan.name}</CardTitle>
+                    <CardDescription className="text-xs lg:text-sm">{plan.description}</CardDescription>
                     <div className="mt-4">
-                      <span className="text-4xl font-bold">NT${plan.price}</span>
-                      <span className="text-gray-600">/月</span>
+                      <span className="text-3xl lg:text-4xl font-bold">NT${plan.price}</span>
+                      <span className="text-gray-600 text-sm">/月</span>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <Button className="w-full mb-6" variant={plan.highlighted ? "default" : "outline"}>
+                    <Button className="w-full mb-6 text-sm" variant={plan.highlighted ? "default" : "outline"}>
                       {plan.cta}
                     </Button>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2 lg:space-y-3">
                       {plan.features.map((feature, fidx) => (
                         <li key={fidx} className="flex items-start gap-2">
-                          <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-gray-700">{feature}</span>
+                          <CheckCircle2 className="h-4 lg:h-5 w-4 lg:w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-xs lg:text-sm text-gray-700">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -308,10 +309,10 @@ export default function Home() {
         </section>
 
         {/* Interactive Demo */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-4">即時體驗 AI 客服</h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container px-4 lg:px-0">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">即時體驗 AI 客服</h2>
+            <p className="text-center text-gray-600 mb-8 lg:mb-12 max-w-2xl mx-auto text-sm lg:text-base">
               選擇您的行業，看看 AI 客服如何自動處理預約、回答問題、提升業績
             </p>
             <TemplatePreview />
@@ -319,28 +320,28 @@ export default function Home() {
         </section>
 
         {/* Quick Start */}
-        <section className="py-20">
-          <div className="container">
-            <h2 className="text-4xl font-bold text-center mb-4">4 步快速開始</h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20">
+          <div className="container px-4 lg:px-0">
+            <h2 className="text-2xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">4 步快速開始</h2>
+            <p className="text-center text-gray-600 mb-8 lg:mb-12 max-w-2xl mx-auto text-sm lg:text-base">
               無需技術背景，30 分鐘內完成部署
             </p>
             
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
               {steps.map((step, idx) => (
                 <div key={idx} className="relative">
                   {idx < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-12 left-1/2 w-full h-1 bg-primary/20 -translate-y-1/2"></div>
+                    <div className="hidden lg:block absolute top-12 left-1/2 w-full h-1 bg-primary/20 -translate-y-1/2"></div>
                   )}
                   <Card className="relative z-10 text-center">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
+                      <div className="w-10 lg:w-12 h-10 lg:h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-3 lg:mb-4 text-base lg:text-lg font-bold">
                         {step.number}
                       </div>
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
+                      <CardTitle className="text-base lg:text-lg">{step.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-gray-600">{step.description}</p>
+                      <p className="text-xs lg:text-sm text-gray-600">{step.description}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -359,17 +360,17 @@ export default function Home() {
         <FAQ />
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-white">
-          <div className="container text-center">
-            <h2 className="text-4xl font-bold mb-4">準備好了嗎？</h2>
-            <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+        <section className="py-12 lg:py-20 bg-gradient-to-r from-primary to-primary/80 text-white">
+          <div className="container px-4 lg:px-0 text-center">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-3 lg:mb-4">準備好了吗？</h2>
+            <p className="text-base lg:text-xl mb-6 lg:mb-8 text-white/90 max-w-2xl mx-auto">
               加入 380+ 家中小企業，透過 AI 客服提升業績
             </p>
-            <div className="flex gap-4 justify-center">
-              <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 w-full sm:w-auto">
                 免費試用 30 天 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
                 預約演示
               </Button>
             </div>
@@ -378,9 +379,9 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <footer className="bg-gray-900 text-gray-400 py-8 lg:py-12">
+        <div className="container px-4 lg:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-8">
             <div>
               <h3 className="text-white font-bold mb-4">From Life To Lines</h3>
               <p className="text-sm">為中小企業打造的 AI 客服解決方案</p>
