@@ -180,19 +180,19 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
 
           <div className="container relative z-10 text-center text-white px-4 py-12 lg:py-0">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20">
-              <Sparkles className="h-4 w-4 text-orange-300" />
-              <span className="text-sm font-medium">AI 智能客服革命</span>
+            <div className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-orange-400/30">
+              <Sparkles className="h-4 w-4 text-orange-500" />
+              <span className="text-sm font-medium text-orange-600">AI 智能客服革命</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-tight animate-fade-in">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-tight animate-fade-in text-gray-900">
               24/7 AI 客服
               <br />
-              <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 30 分鐘快速上線
               </span>
             </h1>
-            <p className="text-base sm:text-lg lg:text-2xl mb-6 lg:mb-8 text-gray-100 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-2xl mb-6 lg:mb-8 text-gray-800 max-w-2xl mx-auto leading-relaxed font-medium">
               為中小企業打造的無代碼 AI 預約客服系統。降低 70-80% 客服成本，提升預約轉化率 20-30%。
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -201,7 +201,7 @@ export default function Home() {
                   免費試用 14 天 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white/20 w-full sm:w-auto transition-all duration-300 backdrop-blur-md">
+              <Button size="lg" variant="outline" className="bg-white/80 border-white text-orange-600 hover:bg-white w-full sm:w-auto transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 預約演示
               </Button>
             </div>
@@ -256,30 +256,30 @@ export default function Home() {
                   className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group border-0"
                   onClick={() => setCurrentCaseStudy(idx)}
                 >
-                  <div className="relative h-48 overflow-hidden bg-gray-200">
+                  <div className="relative h-64 overflow-hidden bg-gray-200">
                     <img
                       src={study.image}
                       alt={study.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 bg-gray-100"
                     />
                   </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <CardTitle className="text-lg">{study.title}</CardTitle>
-                      <span className="text-xs bg-gradient-to-r from-orange-100 to-orange-50 text-orange-600 px-2 py-1 rounded font-medium">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between mb-3">
+                      <CardTitle className="text-lg font-bold text-gray-900">{study.title}</CardTitle>
+                      <span className="text-xs bg-gradient-to-r from-orange-100 to-orange-50 text-orange-600 px-3 py-1 rounded-full font-semibold">
                         {study.industry}
                       </span>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-3 bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{study.metric1}</div>
-                        <p className="text-xs text-gray-600 mt-1">{study.metric1Label}</p>
+                  <CardContent className="pt-0">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="p-4 bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg border border-green-200/50">
+                        <div className="text-2xl font-bold text-green-700">{study.metric1}</div>
+                        <p className="text-xs text-gray-700 mt-2 font-medium">{study.metric1Label}</p>
                       </div>
-                      <div className="p-3 bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{study.metric2}</div>
-                        <p className="text-xs text-gray-600 mt-1">{study.metric2Label}</p>
+                      <div className="p-4 bg-gradient-to-br from-green-50 to-green-100/50 rounded-lg border border-green-200/50">
+                        <div className="text-2xl font-bold text-green-700">{study.metric2}</div>
+                        <p className="text-xs text-gray-700 mt-2 font-medium">{study.metric2Label}</p>
                       </div>
                     </div>
                   </CardContent>

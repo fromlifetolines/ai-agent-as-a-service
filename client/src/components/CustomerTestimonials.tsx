@@ -166,8 +166,8 @@ export default function CustomerTestimonials() {
           <p className="text-gray-700 mb-4">
             加入這些成功的企業，開始您的 AI 客服之旅
           </p>
-          <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-            免費試用 30 天
+          <button className="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-lg transition-colors font-semibold shadow-lg hover:shadow-xl">
+            免費試用 14 天
           </button>
         </div>
       </div>

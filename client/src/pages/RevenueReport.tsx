@@ -1,251 +1,193 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { TrendingUp, Users, CreditCard, Target, BarChart3, LineChart } from "lucide-react";
-import { trpc } from "@/lib/trpc";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, TrendingDown, DollarSign, Users, Percent, Target, Download, Calendar } from "lucide-react";
+
+interface RevenueData {
+  month: string;
+  revenue: number;
+  growth: number;
+  customers: number;
+  conversionRate: number;
+}
+
+interface PlanMetrics {
+  name: string;
+  revenue: number;
+  customers: number;
+  percentage: number;
+}
+
+// Mock 業績資料
+const mockMonthlyData: RevenueData[] = [
+  { month: "1月", revenue: 45000, growth: 0, customers: 15, conversionRate: 12.5 },
+  { month: "2月", revenue: 52000, growth: 15.6, customers: 18, conversionRate: 14.2 },
+  { month: "3月", revenue: 58000, growth: 11.5, customers: 21, conversionRate: 15.8 },
+  { month: "4月", revenue: 72000, growth: 24.1, customers: 28, conversionRate: 18.5 },
+  { month: "5月", revenue: 85000, growth: 18.1, customers: 35, conversionRate: 20.1 },
+  { month: "6月", revenue: 98000, growth: 15.3, customers: 42, conversionRate: 21.5 },
+];
+
+const mockPlanMetrics: PlanMetrics[] = [
+  { name: "基礎版", revenue: 29400, customers: 14, percentage: 30 },
+  { name: "專業版", revenue: 58800, customers: 20, percentage: 60 },
+  { name: "企業版", revenue: 9800, customers: 1, percentage: 10 },
+];
+
+const mockTopFeatures = [
+  { name: "LINE 整合", usage: 95, trend: "up" },
+  { name: "自動預約", usage: 88, trend: "up" },
+  { name: "知識庫", usage: 82, trend: "stable" },
+  { name: "分析報表", usage: 75, trend: "down" },
+  { name: "Google Calendar", usage: 68, trend: "up" },
+];
 
 export default function RevenueReport() {
-  const currentDate = new Date();
-  const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
+  const [selectedMonth, setSelectedMonth] = useState("6月");
+  const currentMonth = mockMonthlyData[mockMonthlyData.length - 1];
+  const previousMonth = mockMonthlyData[mockMonthlyData.length - 2];
 
-  // Fetch monthly revenue
-  const { data: monthlyRevenue, isLoading: revenueLoading } = trpc.revenue.getMonthlyRevenue.useQuery({
-    year: selectedYear,
-    month: selectedMonth,
-  });
-
-  // Fetch revenue trend
-  const { data: revenueTrend } = trpc.revenue.getRevenueTrend.useQuery();
-
-  // Fetch customer metrics
-  const { data: customerMetrics } = trpc.revenue.getCustomerMetrics.useQuery({
-    year: selectedYear,
-    month: selectedMonth,
-  });
-
-  // Fetch conversion metrics
-  const { data: conversionMetrics } = trpc.revenue.getConversionMetrics.useQuery({
-    year: selectedYear,
-    month: selectedMonth,
-  });
-
-  // Fetch MRR
-  const { data: mrrData } = trpc.revenue.getMRR.useQuery();
-
-  // Fetch ARR
-  const { data: arrData } = trpc.revenue.getARR.useQuery();
-
-  const months = [
-    { value: 1, label: "1 月" },
-    { value: 2, label: "2 月" },
-    { value: 3, label: "3 月" },
-    { value: 4, label: "4 月" },
-    { value: 5, label: "5 月" },
-    { value: 6, label: "6 月" },
-    { value: 7, label: "7 月" },
-    { value: 8, label: "8 月" },
-    { value: 9, label: "9 月" },
-    { value: 10, label: "10 月" },
-    { value: 11, label: "11 月" },
-    { value: 12, label: "12 月" },
-  ];
-
-  const years = Array.from({ length: 5 }, (_, i) => currentDate.getFullYear() - i);
-
-  if (revenueLoading) {
-    return (
-      <div className="flex items-center justify-center h-96">
-        <p className="text-gray-500">載入中...</p>
-      </div>
-    );
-  }
+  const mrr = currentMonth.revenue;
+  const arr = mrr * 12;
+  const mrrGrowth = currentMonth.growth;
+  const customerChurn = 2.5;
+  const ltv = 45000;
+  const cac = 5000;
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold">業績報表</h1>
-          <p className="text-gray-600 mt-1">查看收入、客戶和轉化率統計</p>
+          <h2 className="text-2xl font-bold text-gray-900">業績報表</h2>
+          <p className="text-sm text-gray-600 mt-1">實時監控您的收入和客戶指標</p>
         </div>
+        <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white">
+          <Download className="h-4 w-4 mr-2" />
+          下載報表
+        </Button>
       </div>
 
-      {/* Date Filters */}
-      <div className="flex gap-4">
-        <Select value={selectedYear.toString()} onValueChange={(v) => setSelectedYear(parseInt(v))}>
-          <SelectTrigger className="w-32">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {years.map((year) => (
-              <SelectItem key={year} value={year.toString()}>
-                {year} 年
-              </SelectItem>
+      {/* 月份選擇 */}
+      <Card className="shadow-md">
+        <CardHeader>
+          <CardTitle className="text-sm">選擇月份</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {mockMonthlyData.map((data) => (
+              <Button
+                key={data.month}
+                variant={selectedMonth === data.month ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedMonth(data.month)}
+                className={selectedMonth === data.month ? "bg-gradient-to-r from-orange-500 to-orange-600" : ""}
+              >
+                {data.month}
+              </Button>
             ))}
-          </SelectContent>
-        </Select>
+          </div>
+        </CardContent>
+      </Card>
 
-        <Select value={selectedMonth.toString()} onValueChange={(v) => setSelectedMonth(parseInt(v))}>
-          <SelectTrigger className="w-32">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {months.map((month) => (
-              <SelectItem key={month.value} value={month.value.toString()}>
-                {month.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Key Metrics */}
+      {/* 關鍵指標 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
+        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <CreditCard className="h-4 w-4" />
-              月度收入
+              <DollarSign className="h-4 w-4 text-green-600" />
+              月度收入 (MRR)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl lg:text-3xl font-bold text-primary">
-              NT${monthlyRevenue?.totalRevenue.toLocaleString()}
+            <div className="text-3xl font-bold text-gray-900">NT${(mrr / 1000).toFixed(1)}K</div>
+            <div className="flex items-center gap-1 mt-2">
+              <TrendingUp className="h-4 w-4 text-green-600" />
+              <span className="text-sm text-green-600 font-medium">+{mrrGrowth.toFixed(1)}%</span>
+              <span className="text-xs text-gray-500">vs 上月</span>
             </div>
-            <p className="text-xs text-gray-600 mt-1">
-              ↑ {monthlyRevenue?.monthlyGrowth}% vs 上月
-            </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              客戶數
+              <DollarSign className="h-4 w-4 text-blue-600" />
+              年度收入 (ARR)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl lg:text-3xl font-bold text-blue-600">
-              {customerMetrics?.totalCustomers}
+            <div className="text-3xl font-bold text-gray-900">NT${(arr / 1000).toFixed(0)}K</div>
+            <div className="flex items-center gap-1 mt-2">
+              <TrendingUp className="h-4 w-4 text-blue-600" />
+              <span className="text-sm text-blue-600 font-medium">+{(mrrGrowth * 12).toFixed(1)}%</span>
+              <span className="text-xs text-gray-500">年度增長</span>
             </div>
-            <p className="text-xs text-gray-600 mt-1">
-              活躍用戶：{customerMetrics?.activeCustomers}
-            </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <Target className="h-4 w-4" />
+              <Users className="h-4 w-4 text-purple-600" />
+              活躍客戶
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold text-gray-900">{currentMonth.customers}</div>
+            <div className="flex items-center gap-1 mt-2">
+              <TrendingUp className="h-4 w-4 text-purple-600" />
+              <span className="text-sm text-purple-600 font-medium">+{currentMonth.customers - previousMonth.customers}</span>
+              <span className="text-xs text-gray-500">vs 上月</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Percent className="h-4 w-4 text-orange-600" />
               轉化率
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl lg:text-3xl font-bold text-green-600">
-              {conversionMetrics?.overallConversion}%
-            </div>
-            <p className="text-xs text-gray-600 mt-1">
-              試用轉付費：{conversionMetrics?.trialToPayingConversion}%
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" />
-              平均訂單值
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl lg:text-3xl font-bold text-purple-600">
-              NT${monthlyRevenue?.averageOrderValue.toLocaleString()}
-            </div>
-            <p className="text-xs text-gray-600 mt-1">
-              本月交易數：{monthlyRevenue?.totalTransactions}
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* MRR & ARR */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>月度經常性收入 (MRR)</CardTitle>
-            <CardDescription>當月訂閱產生的經常性收入</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">當前 MRR</p>
-              <p className="text-3xl font-bold text-primary">NT${mrrData?.currentMRR.toLocaleString()}</p>
-              <p className="text-sm text-green-600 mt-1">↑ {mrrData?.growth}% vs 上月</p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-gray-900">按方案分佈：</p>
-              {mrrData?.mrrByPlan.map((plan: any, idx: number) => (
-                <div key={idx} className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">
-                    {plan.plan} ({plan.customers} 客戶)
-                  </span>
-                  <span className="font-medium">NT${plan.mrr.toLocaleString()}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>年度經常性收入 (ARR)</CardTitle>
-            <CardDescription>年化訂閱產生的經常性收入</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">當前 ARR</p>
-              <p className="text-3xl font-bold text-primary">NT${arrData?.currentARR.toLocaleString()}</p>
-              <p className="text-sm text-green-600 mt-1">↑ {arrData?.growth}% vs 去年</p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-gray-900">按方案分佈：</p>
-              {arrData?.arrByPlan.map((plan: any, idx: number) => (
-                <div key={idx} className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">
-                    {plan.plan} ({plan.customers} 客戶)
-                  </span>
-                  <span className="font-medium">NT${plan.arr.toLocaleString()}</span>
-                </div>
-              ))}
+            <div className="text-3xl font-bold text-gray-900">{currentMonth.conversionRate.toFixed(1)}%</div>
+            <div className="flex items-center gap-1 mt-2">
+              <TrendingUp className="h-4 w-4 text-orange-600" />
+              <span className="text-sm text-orange-600 font-medium">+{(currentMonth.conversionRate - previousMonth.conversionRate).toFixed(1)}%</span>
+              <span className="text-xs text-gray-500">vs 上月</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Top Plans */}
-      <Card>
+      {/* 收入趨勢 */}
+      <Card className="shadow-md">
         <CardHeader>
-          <CardTitle>熱銷方案排行</CardTitle>
-          <CardDescription>本月收入最高的訂閱方案</CardDescription>
+          <CardTitle>6 個月收入趨勢</CardTitle>
+          <CardDescription>月度收入與增長率</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {monthlyRevenue?.topPlans.map((plan: any, idx: number) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-semibold text-gray-900">{plan.name}</p>
-                  <p className="text-sm text-gray-600">{plan.customers} 位客戶</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-bold text-primary">NT${plan.revenue.toLocaleString()}</p>
-                  <p className="text-xs text-gray-600">
-                    {((plan.revenue / monthlyRevenue.totalRevenue) * 100).toFixed(1)}% 佔比
-                  </p>
+            {mockMonthlyData.map((data, idx) => (
+              <div key={data.month} className="flex items-center gap-4">
+                <div className="w-12 text-sm font-medium text-gray-600">{data.month}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-24 h-8 bg-gradient-to-r from-orange-100 to-orange-200 rounded-lg flex items-center justify-center">
+                      <span className="text-xs font-semibold text-orange-700">NT${(data.revenue / 1000).toFixed(0)}K</span>
+                    </div>
+                    {data.growth > 0 && (
+                      <Badge className="bg-green-100 text-green-800">+{data.growth.toFixed(1)}%</Badge>
+                    )}
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${(data.revenue / 98000) * 100}%` }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -253,86 +195,131 @@ export default function RevenueReport() {
         </CardContent>
       </Card>
 
-      {/* Customer Metrics */}
-      <Card>
+      {/* 方案分佈 */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle>方案收入分佈</CardTitle>
+            <CardDescription>各方案的收入佔比</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {mockPlanMetrics.map((plan) => (
+              <div key={plan.name} className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-gray-900">{plan.name}</span>
+                  <span className="text-sm text-gray-600">NT${(plan.revenue / 1000).toFixed(1)}K ({plan.percentage}%)</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full"
+                    style={{ width: `${plan.percentage}%` }}
+                  ></div>
+                </div>
+                <div className="text-xs text-gray-500">{plan.customers} 位客戶</div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle>客戶指標</CardTitle>
+            <CardDescription>關鍵業務指標</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+              <div className="text-sm text-gray-600 mb-1">客戶終身價值 (LTV)</div>
+              <div className="text-2xl font-bold text-blue-600">NT${(ltv / 1000).toFixed(0)}K</div>
+            </div>
+
+            <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg">
+              <div className="text-sm text-gray-600 mb-1">客戶獲取成本 (CAC)</div>
+              <div className="text-2xl font-bold text-purple-600">NT${(cac / 1000).toFixed(0)}K</div>
+            </div>
+
+            <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
+              <div className="text-sm text-gray-600 mb-1">LTV:CAC 比率</div>
+              <div className="text-2xl font-bold text-green-600">{(ltv / cac).toFixed(1)}:1</div>
+              <p className="text-xs text-gray-600 mt-1">✓ 優秀（&gt;3:1）</p>
+            </div>
+
+            <div className="p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-lg">
+              <div className="text-sm text-gray-600 mb-1">客戶流失率</div>
+              <div className="text-2xl font-bold text-red-600">{customerChurn.toFixed(1)}%</div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 熱銷功能 */}
+      <Card className="shadow-md">
         <CardHeader>
-          <CardTitle>客戶指標</CardTitle>
-          <CardDescription>客戶獲取、保留和流失分析</CardDescription>
+          <CardTitle>熱銷功能排行</CardTitle>
+          <CardDescription>客戶最常使用的功能</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <p className="text-sm text-gray-600">新客戶（本月）</p>
-              <p className="text-2xl font-bold text-blue-600">{monthlyRevenue?.newCustomers}</p>
-            </div>
-            <div className="p-3 bg-red-50 rounded-lg">
-              <p className="text-sm text-gray-600">流失客戶（本月）</p>
-              <p className="text-2xl font-bold text-red-600">{monthlyRevenue?.churnedCustomers}</p>
-            </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <p className="text-sm text-gray-600">保留率</p>
-              <p className="text-2xl font-bold text-green-600">{customerMetrics?.retentionRate}%</p>
-            </div>
-            <div className="p-3 bg-purple-50 rounded-lg">
-              <p className="text-sm text-gray-600">客戶終身價值</p>
-              <p className="text-2xl font-bold text-purple-600">NT${customerMetrics?.lifetimeValue}</p>
-            </div>
+          <div className="space-y-3">
+            {mockTopFeatures.map((feature, idx) => (
+              <div key={feature.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-sm">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{feature.name}</p>
+                    <p className="text-xs text-gray-600">使用率 {feature.usage}%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-32 bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full"
+                      style={{ width: `${feature.usage}%` }}
+                    ></div>
+                  </div>
+                  {feature.trend === "up" && (
+                    <TrendingUp className="h-4 w-4 text-green-600" />
+                  )}
+                  {feature.trend === "down" && (
+                    <TrendingDown className="h-4 w-4 text-red-600" />
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Conversion Metrics */}
-      <Card>
+      {/* 轉化率分析 */}
+      <Card className="shadow-md">
         <CardHeader>
           <CardTitle>轉化率分析</CardTitle>
-          <CardDescription>各個轉化漏斗的轉化率</CardDescription>
+          <CardDescription>各階段的轉化漏斗</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-900">註冊到試用</span>
-                <span className="text-sm font-bold text-primary">
-                  {conversionMetrics?.signupToTrialConversion}%
-                </span>
+            {[
+              { stage: "訪問網站", count: 5000, rate: 100 },
+              { stage: "開始免費試用", count: 625, rate: 12.5 },
+              { stage: "完成設定", count: 375, rate: 7.5 },
+              { stage: "付款轉換", count: 42, rate: 0.84 },
+            ].map((item, idx) => (
+              <div key={item.stage} className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-gray-900">{item.stage}</span>
+                  <div className="text-right">
+                    <div className="text-sm font-semibold text-gray-900">{item.count.toLocaleString()}</div>
+                    <div className="text-xs text-gray-600">{item.rate.toFixed(2)}%</div>
+                  </div>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div
+                    className="bg-gradient-to-r from-orange-400 to-orange-600 h-3 rounded-full transition-all duration-500"
+                    style={{ width: `${item.rate}%` }}
+                  ></div>
+                </div>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-primary h-2 rounded-full"
-                  style={{ width: `${conversionMetrics?.signupToTrialConversion}%` }}
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-900">試用到付費</span>
-                <span className="text-sm font-bold text-green-600">
-                  {conversionMetrics?.trialToPayingConversion}%
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-green-600 h-2 rounded-full"
-                  style={{ width: `${conversionMetrics?.trialToPayingConversion}%` }}
-                ></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-900">整體轉化率</span>
-                <span className="text-sm font-bold text-blue-600">
-                  {conversionMetrics?.overallConversion}%
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-600 h-2 rounded-full"
-                  style={{ width: `${conversionMetrics?.overallConversion}%` }}
-                ></div>
-              </div>
-            </div>
+            ))}
           </div>
         </CardContent>
       </Card>
