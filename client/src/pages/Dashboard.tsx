@@ -59,9 +59,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/20 to-white">
       {/* Header */}
-      <header className="bg-white border-b border-border sticky top-0 z-40">
+      <header className="bg-white/80 backdrop-blur-md border-b border-blue-100/50 shadow-sm sticky top-0 z-40">
         <div className="container px-4 lg:px-0 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="text-xl lg:text-2xl font-bold text-primary">From Life To Lines</div>
@@ -234,7 +234,7 @@ export default function Dashboard() {
                     { title: "員工資訊", count: "3 位", lastUpdate: "1 週前" },
                     { title: "營業時間", count: "已設定", lastUpdate: "1 個月前" },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-gray-50">
+                    <div key={idx} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-gradient-to-b from-white via-blue-50/20 to-white">
                       <div>
                         <p className="font-semibold text-sm">{item.title}</p>
                         <p className="text-xs text-gray-600">最後更新：{item.lastUpdate}</p>

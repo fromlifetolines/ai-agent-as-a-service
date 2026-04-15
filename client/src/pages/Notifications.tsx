@@ -156,7 +156,7 @@ export default function Notifications() {
           filteredNotifications.map((notification: any) => (
             <Card
               key={notification.id}
-              className={`cursor-pointer transition-all hover:shadow-md ${
+              className={`cursor-pointer transition-all hover:shadow-md hover:shadow-lg transition-shadow duration-300 ${
                 !notification.isRead ? "border-primary/50 bg-primary/5" : ""
               }`}
               onClick={() => {
