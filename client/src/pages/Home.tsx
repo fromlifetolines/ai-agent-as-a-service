@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, MessageSquare, Calendar, Zap, BarChart3, Globe, ArrowRight, Star } from "lucide-react";
 import { useState } from "react";
+import TemplatePreview from "@/components/TemplatePreview";
 
 const pricingPlans = [
   {
@@ -300,6 +301,17 @@ export default function Home() {
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Interactive Demo */}
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container">
+            <h2 className="text-4xl font-bold text-center mb-4">即時體驗 AI 客服</h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              選擇您的行業，看看 AI 客服如何自動處理預約、回答問題、提升業績
+            </p>
+            <TemplatePreview />
           </div>
         </section>
 
