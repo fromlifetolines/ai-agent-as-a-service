@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckCircle2, MessageSquare, Calendar, Zap, BarChart3, Globe, ArrowRight, Star } from "lucide-react";
 import { useState } from "react";
 import TemplatePreview from "@/components/TemplatePreview";
+import FAQ from "@/components/FAQ";
 
 const pricingPlans = [
   {
@@ -345,6 +346,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ />
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-white">
