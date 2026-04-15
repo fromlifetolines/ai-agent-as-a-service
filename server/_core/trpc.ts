@@ -37,11 +37,15 @@ export const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
 import { authRouter } from "./routers/auth.js";
 import { subscriptionRouter } from "./routers/subscription.js";
 import { analyticsRouter } from "./routers/analytics.js";
+import { notificationRouter } from "./routers/notification.js";
+import { revenueRouter } from "./routers/revenue.js";
 
 export const appRouter = router({
   auth: authRouter,
   subscription: subscriptionRouter,
   analytics: analyticsRouter,
+  notification: notificationRouter,
+  revenue: revenueRouter,
 });
 
 export type AppRouter = typeof appRouter;

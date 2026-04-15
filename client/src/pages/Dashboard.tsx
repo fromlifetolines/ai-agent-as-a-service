@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import AnalyticsPanel from "@/components/AnalyticsPanel";
 import SubscriptionPlans from "./SubscriptionPlans";
+import Notifications from "./Notifications";
+import RevenueReport from "./RevenueReport";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -132,11 +134,13 @@ export default function Dashboard() {
 
         {/* Main Tabs */}
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 lg:w-auto">
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-4 lg:w-auto gap-1">
             <TabsTrigger value="overview" className="text-xs lg:text-sm">概覽</TabsTrigger>
-            <TabsTrigger value="knowledge" className="text-xs lg:text-sm">知識庫</TabsTrigger>
             <TabsTrigger value="analytics" className="text-xs lg:text-sm">分析</TabsTrigger>
-            <TabsTrigger value="plans" className="text-xs lg:text-sm">訂閱方案</TabsTrigger>
+            <TabsTrigger value="revenue" className="text-xs lg:text-sm">業績</TabsTrigger>
+            <TabsTrigger value="plans" className="text-xs lg:text-sm">方案</TabsTrigger>
+            <TabsTrigger value="knowledge" className="text-xs lg:text-sm">知識庫</TabsTrigger>
+            <TabsTrigger value="notifications" className="text-xs lg:text-sm">通知</TabsTrigger>
             <TabsTrigger value="settings" className="text-xs lg:text-sm">設定</TabsTrigger>
           </TabsList>
 
@@ -256,6 +260,16 @@ export default function Dashboard() {
           {/* Subscription Plans Tab */}
           <TabsContent value="plans" className="space-y-6">
             <SubscriptionPlans />
+          </TabsContent>
+
+          {/* Revenue Tab */}
+          <TabsContent value="revenue" className="space-y-6">
+            <RevenueReport />
+          </TabsContent>
+
+          {/* Notifications Tab */}
+          <TabsContent value="notifications" className="space-y-6">
+            <Notifications />
           </TabsContent>
 
           {/* Settings Tab */}
