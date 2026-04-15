@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckCircle2, MessageSquare, Calendar, Zap, BarChart3, Globe, ArrowRight, Star } from "lucide-react";
 import { useState } from "react";
 import TemplatePreview from "@/components/TemplatePreview";
-import KnowledgeBaseSetup from "@/components/KnowledgeBaseSetup";
 
 const pricingPlans = [
   {
@@ -313,13 +312,6 @@ export default function Home() {
               選擇您的行業，看看 AI 客服如何自動處理預約、回答問題、提升業績
             </p>
             <TemplatePreview />
-          </div>
-        </section>
-
-        {/* Interactive Knowledge Base Setup */}
-        <section className="py-20 bg-white">
-          <div className="container">
-            <KnowledgeBaseSetup />
           </div>
         </section>
 
