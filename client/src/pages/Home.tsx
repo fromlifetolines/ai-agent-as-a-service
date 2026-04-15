@@ -5,6 +5,7 @@ import { useState } from "react";
 import TemplatePreview from "@/components/TemplatePreview";
 import FAQ from "@/components/FAQ";
 import CustomerTestimonials from "@/components/CustomerTestimonials";
+import PartnersAndMedia from "@/components/PartnersAndMedia";
 
 const pricingPlans = [
   {
@@ -350,6 +351,9 @@ export default function Home() {
 
         {/* Customer Testimonials Section */}
         <CustomerTestimonials />
+
+        {/* Partners and Media Section */}
+        <PartnersAndMedia />
 
         {/* FAQ Section */}
         <FAQ />
