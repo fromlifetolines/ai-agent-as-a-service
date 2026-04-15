@@ -4,6 +4,7 @@ import { CheckCircle2, MessageSquare, Calendar, Zap, BarChart3, Globe, ArrowRigh
 import { useState } from "react";
 import TemplatePreview from "@/components/TemplatePreview";
 import FAQ from "@/components/FAQ";
+import CustomerTestimonials from "@/components/CustomerTestimonials";
 
 const pricingPlans = [
   {
@@ -346,6 +347,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Customer Testimonials Section */}
+        <CustomerTestimonials />
 
         {/* FAQ Section */}
         <FAQ />
