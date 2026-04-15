@@ -138,7 +138,7 @@ export default function Templates() {
     localStorage.setItem("templateSelectedAt", new Date().toISOString());
     
     // 重定向到知識庫配置頁面
-    window.location.href = "/dashboard?tab=knowledge";
+    window.location.href = "/api-integration";
   };
 
   const selectedTemplateData = templates.find(t => t.id === selectedTemplate);

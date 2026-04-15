@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Templates from "./pages/Templates";
+import APIIntegration from "./pages/APIIntegration";
 
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/templates" component={Templates} />
+      <Route path="/api-integration" component={APIIntegration} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

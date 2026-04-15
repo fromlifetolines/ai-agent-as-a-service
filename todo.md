@@ -52,11 +52,11 @@ From Life To Lines - AI 智能客服 / Agent 模版租賃 SaaS 平台
 - [x] 模版策略存儲機制
 
 ### Phase 7: 系統整合 API
-- [ ] LINE 整合 API
-- [ ] Google Calendar 整合 API
-- [ ] AI 客服核心 API
-- [ ] 知識庫管理 API
-- [ ] 訂閱管理 API
+- [x] LINE 整合 API
+- [x] Google Calendar 整合 API
+- [x] AI 客服核心 API
+- [x] 知識庫管理 API
+- [x] 訂閱管理 API
 
 ### Phase 8: 完整工作流程
 - [ ] 模版選擇 → 知識庫配置
