@@ -8,7 +8,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Templates from "./pages/Templates";
+import KnowledgeBase from "./pages/KnowledgeBase";
 import APIIntegration from "./pages/APIIntegration";
+import LaunchChatbot from "./pages/LaunchChatbot";
 
 
 function Router() {
@@ -17,7 +19,9 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/templates" component={Templates} />
+      <Route path="/knowledge-base" component={KnowledgeBase} />
       <Route path="/api-integration" component={APIIntegration} />
+      <Route path="/launch" component={LaunchChatbot} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
