@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import AnalyticsPanel from "@/components/AnalyticsPanel";
+import SubscriptionPlans from "./SubscriptionPlans";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,11 +10,11 @@ import {
   BarChart3, 
   MessageSquare, 
   Users, 
-  Calendar,
   Edit2,
   Eye,
   Download,
-  Plus
+  Plus,
+  Calendar
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -130,10 +132,11 @@ export default function Dashboard() {
 
         {/* Main Tabs */}
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:w-auto">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 lg:w-auto">
             <TabsTrigger value="overview" className="text-xs lg:text-sm">概覽</TabsTrigger>
             <TabsTrigger value="knowledge" className="text-xs lg:text-sm">知識庫</TabsTrigger>
             <TabsTrigger value="analytics" className="text-xs lg:text-sm">分析</TabsTrigger>
+            <TabsTrigger value="plans" className="text-xs lg:text-sm">訂閱方案</TabsTrigger>
             <TabsTrigger value="settings" className="text-xs lg:text-sm">設定</TabsTrigger>
           </TabsList>
 
@@ -247,54 +250,12 @@ export default function Dashboard() {
 
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg lg:text-xl">分析報告</CardTitle>
-                <CardDescription>查看 AI 客服的效能數據</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">📊 本月概覽</p>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-                      <div>
-                        <p className="text-gray-600">總對話數</p>
-                        <p className="text-xl font-bold text-primary">2,847</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">平均回應時間</p>
-                        <p className="text-xl font-bold text-primary">0.8s</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">預約成功率</p>
-                        <p className="text-xl font-bold text-green-600">94.2%</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">用戶滿意度</p>
-                        <p className="text-xl font-bold text-blue-600">4.8/5</p>
-                      </div>
-                    </div>
-                  </div>
+            <AnalyticsPanel />
+          </TabsContent>
 
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900 mb-3">🔝 熱門問題</p>
-                    <div className="space-y-2">
-                      {[
-                        "營業時間是幾點？",
-                        "如何預約服務？",
-                        "有停車位嗎？",
-                        "支援線上支付嗎？",
-                      ].map((q, idx) => (
-                        <div key={idx} className="flex items-center justify-between text-sm">
-                          <span className="text-gray-700">{q}</span>
-                          <span className="font-semibold text-gray-900">{Math.floor(Math.random() * 200) + 50} 次</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Subscription Plans Tab */}
+          <TabsContent value="plans" className="space-y-6">
+            <SubscriptionPlans />
           </TabsContent>
 
           {/* Settings Tab */}
