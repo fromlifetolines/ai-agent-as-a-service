@@ -1,0 +1,84 @@
+# AI Agent as a Service - System Architecture
+
+direction: right
+
+# External Systems
+customer: "Customer (LINE User)" {
+  shape: person
+}
+
+line_api: "LINE Official Account API" {
+  shape: rectangle
+  style: {
+    fill: "#00C300"
+    stroke: "#00A000"
+  }
+}
+
+# Make.com Orchestration Platform
+make: "Make.com Automation Platform" {
+  shape: rectangle
+  style: {
+    fill: "#6D28D9"
+    stroke: "#4C1D95"
+  }
+  
+  webhook: "Webhook Receiver" {
+    shape: rectangle
+  }
+  
+  openai_module: "OpenAI Module" {
+    shape: rectangle
+    style: {
+      fill: "#10B981"
+    }
+  }
+  
+  calendar_module: "Google Calendar Module" {
+    shape: rectangle
+    style: {
+      fill: "#3B82F6"
+    }
+  }
+  
+  router: "Intent Router" {
+    shape: diamond
+  }
+  
+  knowledge_db: "Knowledge Base (JSON)" {
+    shape: cylinder
+  }
+  
+  webhook -> router
+  router -> openai_module
+  openai_module -> knowledge_db
+  router -> calendar_module
+}
+
+# External APIs
+openai_api: "OpenAI API" {
+  shape: rectangle
+  style: {
+    fill: "#10B981"
+  }
+}
+
+google_calendar: "Google Calendar API" {
+  shape: rectangle
+  style: {
+    fill: "#3B82F6"
+  }
+}
+
+# Data Flow
+customer -> line_api: "Send Message (Text/Intent)"
+line_api -> make.webhook: "Forward Message (JSON)"
+
+make.openai_module -> openai_api: "Call API (Prompt + Context)"
+openai_api -> make.openai_module: "Return Response (Intent + Entities)"
+
+make.calendar_module -> google_calendar: "Check Availability / Create Event"
+google_calendar -> make.calendar_module: "Return Slots / Confirmation"
+
+make.router -> line_api: "Send Response (Confirmation/Options)"
+line_api -> customer: "Display Message"

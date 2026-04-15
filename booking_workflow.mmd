@@ -1,0 +1,40 @@
+sequenceDiagram
+    participant Customer as 客戶<br/>(LINE 用戶)
+    participant LINE as LINE<br/>官方帳號
+    participant Make as Make.com<br/>自動化平台
+    participant OpenAI as OpenAI<br/>Agent Builder
+    participant Calendar as Google<br/>Calendar
+    
+    Customer->>LINE: 發送訊息<br/>「我想預約洗牙」
+    LINE->>Make: Webhook 轉發訊息
+    Make->>OpenAI: 分析意圖與實體
+    
+    alt 預約意圖
+        OpenAI-->>Make: 返回意圖 = 預約<br/>服務 = 洗牙
+        Make->>Calendar: 檢查檔期<br/>(日期範圍)
+        
+        alt 有可用時段
+            Calendar-->>Make: 返回可用時段<br/>例: 明天 14:00-14:30
+            Make->>Make: 提取時間詳情<br/>生成預約確認
+            Make->>LINE: 發送確認訊息<br/>「確認預約?」
+            Customer->>LINE: 用戶確認
+            LINE->>Make: 確認信號
+            Make->>Calendar: 寫入事件
+            Calendar-->>Make: 事件 ID 返回
+            Make->>LINE: 發送成功訊息<br/>「預約已確認」
+            LINE->>Customer: 顯示確認與提醒
+        else 檔期滿
+            Calendar-->>Make: 無可用時段
+            Make->>LINE: 發送替代方案<br/>「建議時間: 後天 10:00」
+            LINE->>Customer: 顯示替代方案
+        end
+    else 查詢意圖
+        OpenAI-->>Make: 返回意圖 = 查詢
+        Make->>Make: 從知識庫取得資訊
+        Make->>LINE: 發送回答
+        LINE->>Customer: 顯示資訊
+    else 其他意圖
+        OpenAI-->>Make: 返回意圖 = 其他
+        Make->>LINE: 轉接人工客服
+        LINE->>Customer: 顯示轉接訊息
+    end

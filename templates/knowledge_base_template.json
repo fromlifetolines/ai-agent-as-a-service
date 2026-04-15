@@ -1,0 +1,245 @@
+{
+  "_metadata": {
+    "version": "1.0",
+    "template_type": "knowledge_base",
+    "created_date": "2026-04-15",
+    "description": "通用 AI 客服知識庫模版 - 適用於所有行業"
+  },
+
+  "business_info": {
+    "name": "[業務名稱]",
+    "type": "[dental_clinic|restaurant|salon|other]",
+    "description": "[業務簡介]",
+    "phone": "[電話號碼]",
+    "email": "[電子郵件]",
+    "address": "[完整地址]",
+    "website": "[網站 URL]",
+    "social_media": {
+      "line": "[LINE 官方帳號 ID]",
+      "facebook": "[Facebook 頁面 URL]",
+      "instagram": "[Instagram 帳號]"
+    },
+    "operating_hours": {
+      "monday": {
+        "open": "09:00",
+        "close": "18:00",
+        "closed": false
+      },
+      "tuesday": {
+        "open": "09:00",
+        "close": "18:00",
+        "closed": false
+      },
+      "wednesday": {
+        "open": "09:00",
+        "close": "18:00",
+        "closed": false
+      },
+      "thursday": {
+        "open": "09:00",
+        "close": "18:00",
+        "closed": false
+      },
+      "friday": {
+        "open": "09:00",
+        "close": "18:00",
+        "closed": false
+      },
+      "saturday": {
+        "open": "09:00",
+        "close": "14:00",
+        "closed": false
+      },
+      "sunday": {
+        "open": null,
+        "close": null,
+        "closed": true
+      }
+    }
+  },
+
+  "services": [
+    {
+      "id": "service_001",
+      "name": "[服務名稱]",
+      "category": "[主要類別]",
+      "duration_minutes": 30,
+      "price": 500,
+      "currency": "TWD",
+      "description": "[詳細說明]",
+      "required_staff_roles": ["role_1", "role_2"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["popular", "new"]
+    }
+  ],
+
+  "staff": [
+    {
+      "id": "staff_001",
+      "name": "[員工名稱]",
+      "title": "[職位]",
+      "specialties": ["specialty_1", "specialty_2"],
+      "bio": "[簡介]",
+      "phone": "[聯絡電話]",
+      "available_hours": {
+        "monday": ["09:00-12:00", "14:00-18:00"],
+        "tuesday": ["09:00-12:00", "14:00-18:00"],
+        "wednesday": ["09:00-12:00", "14:00-18:00"],
+        "thursday": ["09:00-12:00", "14:00-18:00"],
+        "friday": ["09:00-12:00", "14:00-18:00"],
+        "saturday": ["09:00-14:00"],
+        "sunday": []
+      },
+      "max_clients_per_day": 12,
+      "break_times": [
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday"]
+        }
+      ]
+    }
+  ],
+
+  "faq": [
+    {
+      "id": "faq_001",
+      "question": "[常見問題]",
+      "answer": "[詳細回答]",
+      "category": "[booking|payment|cancellation|service|other]",
+      "priority": 1,
+      "keywords": ["keyword1", "keyword2"]
+    }
+  ],
+
+  "business_rules": {
+    "booking": {
+      "min_advance_notice_hours": 2,
+      "max_advance_booking_days": 30,
+      "max_concurrent_bookings_per_customer": 1,
+      "allow_same_day_booking": true,
+      "require_customer_confirmation": true,
+      "confirmation_message": "感謝您的預約，我們已為您保留時段。請於預約時間前 10 分鐘到達。",
+      "cancellation_policy": "預約前 24 小時可免費取消",
+      "reschedule_policy": "可隨時改期，需提前 24 小時通知"
+    },
+    "pricing": {
+      "currency": "TWD",
+      "accept_payment_methods": ["cash", "credit_card", "line_pay"],
+      "first_time_discount_percent": 0,
+      "package_discounts": [
+        {
+          "name": "3 次套票",
+          "sessions": 3,
+          "discount_percent": 5
+        },
+        {
+          "name": "6 次套票",
+          "sessions": 6,
+          "discount_percent": 10
+        }
+      ],
+      "seasonal_promotions": []
+    },
+    "escalation": {
+      "transfer_keywords": ["投訴", "問題", "不滿", "退款", "幫我", "人工"],
+      "transfer_message": "感謝您的反饋，我將轉接給專人處理。請稍候...",
+      "transfer_to_department": "customer_service",
+      "max_wait_time_seconds": 300
+    },
+    "customer_data": {
+      "collect_phone": true,
+      "collect_email": true,
+      "collect_name": true,
+      "collect_notes": true,
+      "gdpr_compliant": true
+    }
+  },
+
+  "conversation_flows": {
+    "greeting": {
+      "trigger_keywords": ["你好", "嗨", "hi", "hello"],
+      "response": "您好！歡迎來到 [業務名稱]。我是 AI 客服助手，可以幫您預約或回答問題。請問有什麼我可以幫助的嗎？"
+    },
+    "booking_intent": {
+      "trigger_keywords": ["預約", "掛號", "訂位", "預訂"],
+      "response": "好的，我幫您預約。請告訴我：\n1. 您想預約的服務是什麼？\n2. 您的偏好日期是？\n3. 您的偏好時間是？"
+    },
+    "query_intent": {
+      "trigger_keywords": ["營業", "時間", "地點", "價格", "費用", "多少錢"],
+      "response": "我來幫您查詢相關資訊..."
+    },
+    "complaint_intent": {
+      "trigger_keywords": ["投訴", "問題", "不滿", "退款"],
+      "response": "感謝您的反饋。我將轉接給專人處理您的問題。"
+    },
+    "closing": {
+      "trigger_keywords": ["謝謝", "再見", "bye", "thanks"],
+      "response": "感謝您的光臨！如有任何問題，歡迎隨時聯絡我們。祝您有美好的一天！"
+    }
+  },
+
+  "ai_prompts": {
+    "system_prompt": "你是一個專業的客服助手，代表 [業務名稱] 與客戶互動。你的職責是：\n1. 理解客戶的需求\n2. 提供準確的資訊\n3. 協助客戶預約\n4. 在必要時轉接人工客服\n\n重要指示：\n- 始終保持禮貌與專業\n- 如果不確定，請誠實說明並轉接人工\n- 遵守業務規則（營業時間、預約政策等）\n- 使用繁體中文回應",
+    
+    "intent_extraction_prompt": "分析以下客戶訊息，並提取以下資訊（以 JSON 格式返回）：\n- intent: 意圖類型 (booking|query|complaint|greeting|other)\n- service: 服務類型（如果有）\n- preferred_date: 偏好日期（如果有）\n- preferred_time: 偏好時間（如果有）\n- customer_name: 客戶名稱（如果有）\n- customer_phone: 客戶電話（如果有）\n- confidence: 信心度 (0-1)\n\n客戶訊息：{message}",
+    
+    "availability_check_prompt": "根據以下資訊，檢查可用的預約時段：\n- 服務: {service_name}\n- 服務時長: {duration} 分鐘\n- 偏好日期: {preferred_date}\n- 偏好時間: {preferred_time}\n- 營業時間: {operating_hours}\n- 已預約時段: {booked_slots}\n\n請返回 3-5 個可用時段的建議。",
+    
+    "confirmation_prompt": "生成一個預約確認訊息，包含以下資訊：\n- 客戶名稱: {customer_name}\n- 服務: {service_name}\n- 日期: {booking_date}\n- 時間: {booking_time}\n- 地點: {location}\n- 提醒事項: {reminders}\n\n訊息應該友善、清晰且包含所有重要資訊。"
+  },
+
+  "templates": {
+    "booking_confirmation": "✅ 預約成功！\n服務：{service_name}\n日期：{booking_date}\n時間：{booking_time}-{booking_end_time}\n地點：{location}\n\n提醒：\n• 請於預約時間前 10 分鐘到達\n• 如需取消，請提前 24 小時通知\n• 聯絡電話：{phone}",
+    
+    "booking_reminder": "📢 預約提醒\n您在 {business_name} 的預約即將開始\n時間：{booking_time}\n服務：{service_name}\n地點：{location}\n\n如需改期或取消，請回覆『改期』或『取消』",
+    
+    "no_availability": "抱歉，{preferred_date} {preferred_time} 無可用時段。\n\n建議時段：\n• {alternative_time_1}\n• {alternative_time_2}\n• {alternative_time_3}\n\n是否接受其中一個時段？",
+    
+    "transfer_to_human": "感謝您的耐心。我現在將您轉接給專人處理。\n預計等待時間：2-5 分鐘\n\n客服人員將很快與您聯絡。"
+  },
+
+  "analytics": {
+    "track_conversation_count": true,
+    "track_booking_success_rate": true,
+    "track_customer_satisfaction": true,
+    "track_transfer_rate": true,
+    "track_average_response_time": true
+  },
+
+  "customization_notes": {
+    "required_fields": [
+      "business_info.name",
+      "business_info.type",
+      "business_info.phone",
+      "business_info.address",
+      "operating_hours",
+      "services"
+    ],
+    "optional_fields": [
+      "staff",
+      "faq",
+      "social_media",
+      "website"
+    ],
+    "industry_specific_customizations": {
+      "dental_clinic": [
+        "新增「首次就診須知」",
+        "新增「保險相關」FAQ",
+        "新增「緊急聯絡」資訊"
+      ],
+      "restaurant": [
+        "新增「菜單查詢」功能",
+        "新增「外帶/內用」選項",
+        "新增「最低消費」說明"
+      ],
+      "salon": [
+        "新增「設計師選擇」功能",
+        "新增「髮型諮詢」流程",
+        "新增「產品推薦」資訊"
+      ]
+    }
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "_metadata": {
+    "version": "1.0",
+    "template_type": "salon",
+    "industry": "salon",
+    "created_date": "2026-04-15",
+    "description": "美髮沙龍專用 AI 客服知識庫範例"
+  },
+
+  "business_info": {
+    "name": "髮型設計工作室 STYLE",
+    "type": "salon",
+    "description": "提供專業髮型設計、染燙護理等全方位美髮服務",
+    "phone": "02-2234-5678",
+    "email": "booking@style-salon.com.tw",
+    "address": "台北市東區忠孝東路四段 100 號 3 樓",
+    "website": "https://style-salon.com.tw",
+    "social_media": {
+      "line": "@style-salon",
+      "facebook": "https://facebook.com/style-salon",
+      "instagram": "@style.salon.taipei"
+    },
+    "operating_hours": {
+      "monday": { "open": "10:00", "close": "19:00", "closed": false },
+      "tuesday": { "open": "10:00", "close": "19:00", "closed": false },
+      "wednesday": { "open": "10:00", "close": "19:00", "closed": false },
+      "thursday": { "open": "10:00", "close": "19:00", "closed": false },
+      "friday": { "open": "10:00", "close": "21:00", "closed": false },
+      "saturday": { "open": "09:00", "close": "20:00", "closed": false },
+      "sunday": { "open": "10:00", "close": "18:00", "closed": false }
+    }
+  },
+
+  "services": [
+    {
+      "id": "haircut",
+      "name": "剪髮",
+      "category": "hair_styling",
+      "duration_minutes": 45,
+      "price": 600,
+      "currency": "TWD",
+      "description": "專業剪髮設計，根據臉型與氣質打造完美造型",
+      "required_staff_roles": ["stylist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["popular", "basic"]
+    },
+    {
+      "id": "coloring",
+      "name": "染髮",
+      "category": "hair_treatment",
+      "duration_minutes": 120,
+      "price": 2000,
+      "currency": "TWD",
+      "description": "使用進口染料，提供多種色系選擇",
+      "required_staff_roles": ["stylist", "assistant"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 24,
+      "cancellation_allowed_hours_before": 48,
+      "tags": ["popular", "premium"]
+    },
+    {
+      "id": "perm",
+      "name": "燙髮",
+      "category": "hair_treatment",
+      "duration_minutes": 150,
+      "price": 2500,
+      "currency": "TWD",
+      "description": "冷燙/熱燙/離子燙等多種選擇，打造蓬鬆捲度",
+      "required_staff_roles": ["stylist", "assistant"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 24,
+      "cancellation_allowed_hours_before": 48,
+      "tags": ["premium"]
+    },
+    {
+      "id": "treatment",
+      "name": "護理療程",
+      "category": "hair_care",
+      "duration_minutes": 60,
+      "price": 1500,
+      "currency": "TWD",
+      "description": "深層護理、蛋白質護理等，修復受損髮質",
+      "required_staff_roles": ["stylist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["care", "popular"]
+    },
+    {
+      "id": "styling",
+      "name": "整體造型",
+      "category": "special_service",
+      "duration_minutes": 90,
+      "price": 1800,
+      "currency": "TWD",
+      "description": "剪 + 染 + 燙的完整造型設計",
+      "required_staff_roles": ["stylist", "assistant"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 48,
+      "cancellation_allowed_hours_before": 72,
+      "tags": ["premium", "comprehensive"]
+    },
+    {
+      "id": "bridal_styling",
+      "name": "新娘造型",
+      "category": "special_event",
+      "duration_minutes": 120,
+      "price": 5000,
+      "currency": "TWD",
+      "description": "婚禮當日專業新娘髮型與彩妝",
+      "required_staff_roles": ["senior_stylist", "makeup_artist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 168,
+      "cancellation_allowed_hours_before": 168,
+      "tags": ["premium", "special_event"]
+    }
+  ],
+
+  "staff": [
+    {
+      "id": "designer_chen",
+      "name": "陳設計師",
+      "title": "資深髮型設計師",
+      "specialties": ["color", "perm", "styling", "bridal"],
+      "bio": "擁有 12 年髮型設計經驗，曾獲多項髮型設計獎項",
+      "phone": "02-2234-5678 ext. 101",
+      "instagram": "@designer.chen",
+      "available_hours": {
+        "monday": ["10:00-19:00"],
+        "tuesday": ["10:00-19:00"],
+        "wednesday": ["10:00-19:00"],
+        "thursday": ["10:00-19:00"],
+        "friday": ["10:00-21:00"],
+        "saturday": ["09:00-20:00"],
+        "sunday": ["10:00-18:00"]
+      },
+      "max_clients_per_day": 8,
+      "break_times": [
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        }
+      ]
+    },
+    {
+      "id": "stylist_wang",
+      "name": "王設計師",
+      "title": "髮型設計師",
+      "specialties": ["cut", "color", "treatment"],
+      "bio": "擅長日系與韓系髮型設計",
+      "phone": "02-2234-5678 ext. 102",
+      "instagram": "@stylist.wang",
+      "available_hours": {
+        "monday": ["10:00-19:00"],
+        "tuesday": ["10:00-19:00"],
+        "wednesday": ["10:00-19:00"],
+        "thursday": ["10:00-19:00"],
+        "friday": ["10:00-21:00"],
+        "saturday": ["09:00-20:00"],
+        "sunday": ["10:00-18:00"]
+      },
+      "max_clients_per_day": 10,
+      "break_times": [
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        }
+      ]
+    },
+    {
+      "id": "assistant_liu",
+      "name": "劉助理",
+      "title": "髮型助理",
+      "specialties": ["assistant", "washing", "treatment"],
+      "bio": "認真負責，協助設計師完成各項服務",
+      "phone": "02-2234-5678 ext. 103",
+      "available_hours": {
+        "monday": ["10:00-19:00"],
+        "tuesday": ["10:00-19:00"],
+        "wednesday": ["10:00-19:00"],
+        "thursday": ["10:00-19:00"],
+        "friday": ["10:00-21:00"],
+        "saturday": ["09:00-20:00"],
+        "sunday": ["10:00-18:00"]
+      },
+      "max_clients_per_day": 15
+    }
+  ],
+
+  "faq": [
+    {
+      "id": "faq_001",
+      "question": "可以預約特定設計師嗎？",
+      "answer": "可以。我們建議預約時告知偏好的設計師。如果該設計師檔期滿，我們會建議其他同樣優秀的設計師。",
+      "category": "booking",
+      "priority": 1,
+      "keywords": ["設計師", "預約", "指定"]
+    },
+    {
+      "id": "faq_002",
+      "question": "首次客人有優惠嗎？",
+      "answer": "有的。首次客人享 8 折優惠。預約時請告知是首次光臨。",
+      "category": "pricing",
+      "priority": 1,
+      "keywords": ["首次", "優惠", "折扣", "新客"]
+    },
+    {
+      "id": "faq_003",
+      "question": "可以刷卡嗎？",
+      "answer": "可以。我們接受現金、信用卡（VISA、Mastercard、JCB）、Apple Pay 與 LINE Pay。",
+      "category": "payment",
+      "priority": 1,
+      "keywords": ["刷卡", "付款", "支付"]
+    },
+    {
+      "id": "faq_004",
+      "question": "髮型諮詢需要收費嗎？",
+      "answer": "免費。我們提供免費的髮型諮詢與顏色試色。建議預留 15-20 分鐘進行諮詢。",
+      "category": "service",
+      "priority": 1,
+      "keywords": ["諮詢", "免費", "試色"]
+    },
+    {
+      "id": "faq_005",
+      "question": "燙染同時做會傷頭髮嗎？",
+      "answer": "同時進行會對頭髮造成較大負擔。我們建議間隔 2-3 週進行，並搭配深層護理。詳情請與設計師諮詢。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["燙", "染", "傷髮", "護理"]
+    },
+    {
+      "id": "faq_006",
+      "question": "多久需要補色？",
+      "answer": "通常 4-6 週需要補色一次。具體時間取決於髮色與個人髮質。設計師會在服務時提供建議。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["補色", "多久", "頻率"]
+    },
+    {
+      "id": "faq_007",
+      "question": "有停車位嗎？",
+      "answer": "我們位於商業大樓，大樓有停車場。首 2 小時免費，超過部分按大樓費率計算。",
+      "category": "other",
+      "priority": 2,
+      "keywords": ["停車", "停車位", "交通"]
+    },
+    {
+      "id": "faq_008",
+      "question": "可以帶小孩來嗎？",
+      "answer": "可以。我們有兒童友善的環境。建議預約時告知有小孩同行，以便安排適合的設計師。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["小孩", "兒童", "小朋友", "帶"]
+    }
+  ],
+
+  "business_rules": {
+    "booking": {
+      "min_advance_notice_hours": 2,
+      "max_advance_booking_days": 30,
+      "max_concurrent_bookings_per_customer": 1,
+      "allow_same_day_booking": true,
+      "require_customer_confirmation": true,
+      "confirmation_message": "感謝您的預約，我們已為您保留時段。請於預約時間準時到達。",
+      "cancellation_policy": "預約前 24 小時可免費取消；24 小時內取消需收取服務費 50%",
+      "reschedule_policy": "可隨時改期，需提前 24 小時通知",
+      "no_show_policy": "無故缺席將記錄在案，連續 2 次無故缺席將暫停預約服務"
+    },
+    "pricing": {
+      "currency": "TWD",
+      "accept_payment_methods": ["cash", "credit_card", "line_pay", "apple_pay"],
+      "first_time_discount_percent": 20,
+      "package_discounts": [
+        {
+          "name": "剪髮 6 次套票",
+          "sessions": 6,
+          "service_id": "haircut",
+          "discount_percent": 10,
+          "validity_days": 180
+        },
+        {
+          "name": "護理療程 4 次套票",
+          "sessions": 4,
+          "service_id": "treatment",
+          "discount_percent": 15,
+          "validity_days": 120
+        }
+      ],
+      "seasonal_promotions": [
+        {
+          "name": "春季染髮優惠",
+          "discount_percent": 15,
+          "service_ids": ["coloring"],
+          "start_date": "2026-03-01",
+          "end_date": "2026-05-31"
+        }
+      ]
+    },
+    "escalation": {
+      "transfer_keywords": ["投訴", "問題", "不滿", "退款", "幫我", "人工", "經理"],
+      "transfer_message": "感謝您的反饋，我現在將您轉接給經理處理。",
+      "transfer_to_department": "management",
+      "max_wait_time_seconds": 300,
+      "escalation_phone": "02-2234-5678 ext. 100"
+    },
+    "customer_data": {
+      "collect_phone": true,
+      "collect_email": true,
+      "collect_name": true,
+      "collect_notes": true,
+      "collect_hair_type": true,
+      "collect_hair_concerns": true,
+      "collect_color_preferences": true,
+      "gdpr_compliant": true
+    },
+    "salon_specific": {
+      "track_designer_availability": true,
+      "send_appointment_reminders": true,
+      "recommend_treatments": true,
+      "track_color_history": true,
+      "track_client_preferences": true,
+      "recommend_follow_up_services": true
+    }
+  },
+
+  "conversation_flows": {
+    "greeting": {
+      "trigger_keywords": ["你好", "嗨", "hi", "hello", "早安", "午安"],
+      "response": "您好！歡迎來到 STYLE 髮型設計工作室 ✨\n\n我是 AI 客服助手，可以幫您：\n• 預約髮型設計\n• 查詢服務與價格\n• 了解設計師資訊\n• 回答常見問題\n\n請問有什麼我可以幫助的嗎？"
+    },
+    "booking_intent": {
+      "trigger_keywords": ["預約", "訂位", "預訂", "想剪", "想染", "想燙"],
+      "response": "好的，我幫您預約。請告訴我：\n\n1️⃣ 您想要的服務：\n   • 剪髮\n   • 染髮\n   • 燙髮\n   • 護理療程\n   • 整體造型\n   • 其他\n\n2️⃣ 偏好的設計師（或無特別要求）\n\n3️⃣ 預約日期與時間\n\n4️⃣ 您的名字與電話"
+    },
+    "designer_query": {
+      "trigger_keywords": ["設計師", "誰", "推薦", "哪位", "檔期"],
+      "response": "我們有兩位優秀的設計師：\n\n👩‍🦰 陳設計師 (資深設計師)\n   • 專精：染髮、燙髮、造型、新娘髮型\n   • 經驗：12 年\n   • Instagram：@designer.chen\n\n👩‍🦰 王設計師 (髮型設計師)\n   • 專精：日系、韓系髮型\n   • 經驗：8 年\n   • Instagram：@stylist.wang\n\n兩位設計師都非常優秀。您有偏好嗎？"
+    },
+    "service_query": {
+      "trigger_keywords": ["服務", "有什麼", "價格", "費用", "多少錢"],
+      "response": "我們提供的服務：\n\n✂️ 剪髮 NT$600 (45 分鐘)\n🎨 染髮 NT$2,000 (120 分鐘)\n🌀 燙髮 NT$2,500 (150 分鐘)\n💆 護理療程 NT$1,500 (60 分鐘)\n✨ 整體造型 NT$1,800 (90 分鐘)\n👰 新娘造型 NT$5,000 (120 分鐘)\n\n首次客人享 8 折優惠！\n\n有興趣的服務嗎？"
+    },
+    "complaint_intent": {
+      "trigger_keywords": ["投訴", "問題", "不滿", "退款", "服務不好"],
+      "response": "感謝您的反饋。我非常重視您的意見，現在將您轉接給經理處理。\n\n⏳ 預計等待時間：2-5 分鐘\n\n經理將很快與您聯絡。如有急事，也可直接撥打：02-2234-5678 ext. 100"
+    },
+    "closing": {
+      "trigger_keywords": ["謝謝", "再見", "bye", "thanks", "不用了"],
+      "response": "感謝您的光臨！✨\n\n如有任何問題，歡迎隨時聯絡我們：\n📞 02-2234-5678\n💬 LINE：@style-salon\n🌐 網站：style-salon.com.tw\n📸 Instagram：@style.salon.taipei\n\n期待為您服務！"
+    }
+  },
+
+  "ai_prompts": {
+    "system_prompt": "你是 STYLE 髮型設計工作室的 AI 客服助手。你的職責是：\n1. 理解客人的髮型需求\n2. 提供準確的服務資訊與設計師介紹\n3. 協助客人預約時段\n4. 在必要時轉接人工客服或經理\n\n重要指示：\n- 始終保持禮貌與熱情\n- 推薦適合的設計師與服務\n- 提供髮型護理建議\n- 如果不確定，請誠實說明並轉接人工\n- 遵守沙龍規則與客人隱私政策\n- 使用繁體中文與友善的語氣",
+    
+    "intent_extraction_prompt": "分析以下客人訊息，並提取以下資訊（以 JSON 格式返回）：\n- intent: 意圖類型 (booking|designer_query|service_query|complaint|greeting|other)\n- service: 服務類型（如果有）\n- preferred_designer: 偏好設計師（如果有）\n- preferred_date: 偏好日期（如果有）\n- preferred_time: 偏好時間（如果有）\n- customer_name: 客人名稱（如果有）\n- customer_phone: 客人電話（如果有）\n- hair_concerns: 頭髮問題（如果有）\n- confidence: 信心度 (0-1)\n\n客人訊息：{message}",
+    
+    "availability_check_prompt": "根據以下資訊，檢查 STYLE 沙龍的可用預約時段：\n- 服務: {service_name}\n- 服務時長: {duration} 分鐘\n- 偏好設計師: {preferred_designer}\n- 偏好日期: {preferred_date}\n- 偏好時間: {preferred_time}\n- 營業時間: {operating_hours}\n- 已預約時段: {booked_slots}\n- 設計師檔期: {designer_schedule}\n\n請返回 3-5 個可用時段的建議。",
+    
+    "confirmation_prompt": "生成一個預約確認訊息，包含以下資訊：\n- 客人名稱: {customer_name}\n- 服務: {service_name}\n- 日期: {booking_date}\n- 時間: {booking_time}\n- 設計師: {designer_name}\n- 沙龍地點: {location}\n- 特殊需求: {special_requests}\n\n訊息應該友善、清晰、專業，並包含所有重要資訊與提醒。"
+  },
+
+  "templates": {
+    "booking_confirmation": "✅ 預約成功！\n\n📋 預約詳情：\n• 服務：{service_name}\n• 日期：{booking_date} ({day_of_week})\n• 時間：{booking_time}-{booking_end_time}\n• 設計師：{designer_name}\n• 名字：{customer_name}\n\n📍 沙龍地址：台北市東區忠孝東路四段 100 號 3 樓\n\n⏰ 提醒：\n• 請於預約時間準時到達\n• 如需取消，請提前 24 小時通知\n• 聯絡電話：02-2234-5678\n\n感謝您的預約！",
+    
+    "booking_reminder": "📢 預約提醒\n\n您在 STYLE 的預約即將開始！\n\n⏰ 時間：{booking_time}\n✂️ 服務：{service_name}\n👩‍🦰 設計師：{designer_name}\n📍 地點：忠孝東路四段 100 號 3 樓\n\n💡 溫馨提醒：\n• 請準時到達\n• 如需改期或取消，請立即回覆\n\n期待為您服務！✨",
+    
+    "no_availability": "抱歉，{preferred_date} {preferred_time} 無可用時段。\n\n建議時段：\n• {alternative_time_1}\n• {alternative_time_2}\n• {alternative_time_3}\n\n是否接受其中一個時段？或需要其他日期的建議？",
+    
+    "transfer_to_human": "感謝您的耐心。我現在將您轉接給經理處理。\n\n⏳ 預計等待時間：2-5 分鐘\n\n經理將很快與您聯絡。"
+  },
+
+  "analytics": {
+    "track_conversation_count": true,
+    "track_booking_success_rate": true,
+    "track_customer_satisfaction": true,
+    "track_transfer_rate": true,
+    "track_average_response_time": true,
+    "track_popular_services": true,
+    "track_designer_preferences": true,
+    "track_repeat_customers": true
+  }
+}

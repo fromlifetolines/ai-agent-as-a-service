@@ -1,0 +1,360 @@
+{
+  "_metadata": {
+    "version": "1.0",
+    "template_type": "dental_clinic",
+    "industry": "dental_clinic",
+    "created_date": "2026-04-15",
+    "description": "牙醫診所專用 AI 客服知識庫範例"
+  },
+
+  "business_info": {
+    "name": "笑容牙醫診所",
+    "type": "dental_clinic",
+    "description": "提供全方位牙科服務，包括預防、治療與美容牙科",
+    "phone": "02-1234-5678",
+    "email": "info@smile-dental.com.tw",
+    "address": "台北市信義區信義路五段 100 號 5 樓",
+    "website": "https://smile-dental.com.tw",
+    "social_media": {
+      "line": "@smile-dental",
+      "facebook": "https://facebook.com/smile-dental",
+      "instagram": "@smile.dental.clinic"
+    },
+    "operating_hours": {
+      "monday": { "open": "09:00", "close": "18:00", "closed": false },
+      "tuesday": { "open": "09:00", "close": "18:00", "closed": false },
+      "wednesday": { "open": "09:00", "close": "18:00", "closed": false },
+      "thursday": { "open": "09:00", "close": "18:00", "closed": false },
+      "friday": { "open": "09:00", "close": "18:00", "closed": false },
+      "saturday": { "open": "09:00", "close": "14:00", "closed": false },
+      "sunday": { "open": null, "close": null, "closed": true }
+    }
+  },
+
+  "services": [
+    {
+      "id": "cleaning",
+      "name": "洗牙（牙齒清潔）",
+      "category": "preventive",
+      "duration_minutes": 30,
+      "price": 500,
+      "currency": "TWD",
+      "description": "專業牙齒清潔與結石清除，預防蛀牙與牙周病",
+      "required_staff_roles": ["dentist", "hygienist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["popular", "preventive"]
+    },
+    {
+      "id": "filling",
+      "name": "補牙",
+      "category": "restorative",
+      "duration_minutes": 45,
+      "price": 1500,
+      "currency": "TWD",
+      "description": "蛀牙填補與修復，使用高品質複合樹脂材料",
+      "required_staff_roles": ["dentist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["restorative"]
+    },
+    {
+      "id": "root_canal",
+      "name": "根管治療",
+      "category": "endodontic",
+      "duration_minutes": 90,
+      "price": 5000,
+      "currency": "TWD",
+      "description": "深層牙髓治療，保留天然牙齒",
+      "required_staff_roles": ["dentist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 24,
+      "cancellation_allowed_hours_before": 48,
+      "tags": ["complex", "endodontic"]
+    },
+    {
+      "id": "implant",
+      "name": "植牙",
+      "category": "prosthetic",
+      "duration_minutes": 120,
+      "price": 25000,
+      "currency": "TWD",
+      "description": "人工牙根植入，提供永久解決方案",
+      "required_staff_roles": ["dentist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 48,
+      "cancellation_allowed_hours_before": 72,
+      "tags": ["premium", "prosthetic"]
+    },
+    {
+      "id": "whitening",
+      "name": "牙齒美白",
+      "category": "cosmetic",
+      "duration_minutes": 60,
+      "price": 3000,
+      "currency": "TWD",
+      "description": "專業牙齒美白，安全有效",
+      "required_staff_roles": ["dentist", "hygienist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["cosmetic", "popular"]
+    },
+    {
+      "id": "extraction",
+      "name": "拔牙",
+      "category": "surgical",
+      "duration_minutes": 30,
+      "price": 1000,
+      "currency": "TWD",
+      "description": "安全的牙齒拔除程序",
+      "required_staff_roles": ["dentist"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 24,
+      "cancellation_allowed_hours_before": 48,
+      "tags": ["surgical"]
+    }
+  ],
+
+  "staff": [
+    {
+      "id": "dr_wang",
+      "name": "王醫生",
+      "title": "牙醫師 (主治醫師)",
+      "specialties": ["implant", "cosmetic", "endodontic"],
+      "bio": "擁有 15 年臨床經驗，專精植牙與美容牙科",
+      "phone": "02-1234-5678 ext. 101",
+      "available_hours": {
+        "monday": ["09:00-12:00", "14:00-18:00"],
+        "tuesday": ["09:00-12:00", "14:00-18:00"],
+        "wednesday": ["09:00-12:00", "14:00-18:00"],
+        "thursday": ["09:00-12:00", "14:00-18:00"],
+        "friday": ["09:00-12:00", "14:00-18:00"],
+        "saturday": ["09:00-14:00"],
+        "sunday": []
+      },
+      "max_clients_per_day": 12,
+      "break_times": [
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday"]
+        }
+      ]
+    },
+    {
+      "id": "hygienist_lee",
+      "name": "李衛生員",
+      "title": "牙科衛生員",
+      "specialties": ["cleaning", "xray", "patient_education"],
+      "bio": "擁有 8 年經驗，專精牙齒清潔與患者教育",
+      "phone": "02-1234-5678 ext. 102",
+      "available_hours": {
+        "monday": ["09:00-12:00", "14:00-18:00"],
+        "tuesday": ["09:00-12:00", "14:00-18:00"],
+        "wednesday": ["09:00-12:00", "14:00-18:00"],
+        "thursday": ["09:00-12:00", "14:00-18:00"],
+        "friday": ["09:00-12:00", "14:00-18:00"],
+        "saturday": ["09:00-14:00"],
+        "sunday": []
+      },
+      "max_clients_per_day": 16,
+      "break_times": [
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "days": ["monday", "tuesday", "wednesday", "thursday", "friday"]
+        }
+      ]
+    }
+  ],
+
+  "faq": [
+    {
+      "id": "faq_001",
+      "question": "首次就診需要帶什麼？",
+      "answer": "請帶健保卡、身分證與保險卡。如有其他醫療紀錄（如 X 光片），也請一併攜帶。",
+      "category": "booking",
+      "priority": 1,
+      "keywords": ["首次", "就診", "帶", "準備", "需要"]
+    },
+    {
+      "id": "faq_002",
+      "question": "可以刷卡嗎？",
+      "answer": "可以。我們接受現金、信用卡（VISA、Mastercard、JCB）與 LINE Pay。",
+      "category": "payment",
+      "priority": 1,
+      "keywords": ["刷卡", "付款", "支付", "方式"]
+    },
+    {
+      "id": "faq_003",
+      "question": "如何取消或改期預約？",
+      "answer": "請在預約時間前 24 小時回覆『取消』或『改期』，或致電 02-1234-5678。臨時取消可能產生取消費用。",
+      "category": "cancellation",
+      "priority": 1,
+      "keywords": ["取消", "改期", "更改", "延期"]
+    },
+    {
+      "id": "faq_004",
+      "question": "洗牙會很痛嗎？",
+      "answer": "洗牙通常不會很痛，只是可能有些不適感。我們的衛生員會盡量溫和操作，並根據您的舒適度調整。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["洗牙", "痛", "疼痛", "害怕"]
+    },
+    {
+      "id": "faq_005",
+      "question": "植牙需要多長時間？",
+      "answer": "植牙通常需要 3-6 個月的療程。首先進行骨整合（2-3 個月），然後安裝牙冠。具體時間取決於個人情況。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["植牙", "時間", "多久", "療程"]
+    },
+    {
+      "id": "faq_006",
+      "question": "健保有給付嗎？",
+      "answer": "基本的洗牙、補牙等治療有健保給付。美容項目（如美白、矯正）需自費。詳情請來電或現場諮詢。",
+      "category": "payment",
+      "priority": 2,
+      "keywords": ["健保", "給付", "自費", "費用"]
+    },
+    {
+      "id": "faq_007",
+      "question": "有停車位嗎？",
+      "answer": "我們位於信義路商業大樓，大樓有停車場。首 2 小時免費，超過部分按大樓費率計算。",
+      "category": "other",
+      "priority": 3,
+      "keywords": ["停車", "停車位", "交通"]
+    },
+    {
+      "id": "faq_008",
+      "question": "可以帶小孩一起來嗎？",
+      "answer": "可以。我們有兒童友善的診療環境。建議先預約兒童牙科時段，我們的醫師會特別溫和對待。",
+      "category": "other",
+      "priority": 2,
+      "keywords": ["小孩", "兒童", "小朋友", "帶"]
+    }
+  ],
+
+  "business_rules": {
+    "booking": {
+      "min_advance_notice_hours": 2,
+      "max_advance_booking_days": 30,
+      "max_concurrent_bookings_per_customer": 1,
+      "allow_same_day_booking": true,
+      "require_customer_confirmation": true,
+      "confirmation_message": "感謝您的預約，我們已為您保留時段。請於預約時間前 10 分鐘到達。",
+      "cancellation_policy": "預約前 24 小時可免費取消；24 小時內取消需收取服務費 50%",
+      "reschedule_policy": "可隨時改期，需提前 24 小時通知",
+      "no_show_policy": "無故缺席將記錄在案，連續 2 次無故缺席將暫停預約服務"
+    },
+    "pricing": {
+      "currency": "TWD",
+      "accept_payment_methods": ["cash", "credit_card", "line_pay"],
+      "first_time_discount_percent": 10,
+      "package_discounts": [
+        {
+          "name": "洗牙 3 次套票",
+          "sessions": 3,
+          "service_id": "cleaning",
+          "discount_percent": 5,
+          "validity_days": 180
+        },
+        {
+          "name": "美白 + 洗牙套票",
+          "sessions": 1,
+          "service_ids": ["whitening", "cleaning"],
+          "discount_percent": 15,
+          "validity_days": 90
+        }
+      ],
+      "seasonal_promotions": [
+        {
+          "name": "春季美白優惠",
+          "discount_percent": 20,
+          "service_ids": ["whitening"],
+          "start_date": "2026-03-01",
+          "end_date": "2026-05-31"
+        }
+      ]
+    },
+    "escalation": {
+      "transfer_keywords": ["投訴", "問題", "不滿", "退款", "幫我", "人工", "醫生"],
+      "transfer_message": "感謝您的反饋，我現在將您轉接給專人處理。請稍候...",
+      "transfer_to_department": "customer_service",
+      "max_wait_time_seconds": 300,
+      "escalation_phone": "02-1234-5678 ext. 100"
+    },
+    "customer_data": {
+      "collect_phone": true,
+      "collect_email": true,
+      "collect_name": true,
+      "collect_notes": true,
+      "collect_medical_history": true,
+      "collect_allergies": true,
+      "gdpr_compliant": true
+    },
+    "dental_specific": {
+      "require_medical_history": true,
+      "track_treatment_progress": true,
+      "send_treatment_reminders": true,
+      "recommend_follow_ups": true,
+      "track_x_rays": true
+    }
+  },
+
+  "conversation_flows": {
+    "greeting": {
+      "trigger_keywords": ["你好", "嗨", "hi", "hello", "早安", "午安"],
+      "response": "您好！歡迎來到笑容牙醫診所 😊\n\n我是 AI 客服助手，可以幫您：\n• 預約掛號\n• 查詢服務與價格\n• 回答常見問題\n\n請問有什麼我可以幫助的嗎？"
+    },
+    "booking_intent": {
+      "trigger_keywords": ["預約", "掛號", "預訂", "想看牙", "要看牙"],
+      "response": "好的，我幫您預約。請告訴我：\n\n1️⃣ 您想預約的服務是什麼？\n   • 洗牙\n   • 補牙\n   • 根管治療\n   • 植牙\n   • 美白\n   • 其他\n\n2️⃣ 您的偏好日期是？\n\n3️⃣ 您的偏好時間是？"
+    },
+    "query_intent": {
+      "trigger_keywords": ["營業", "時間", "地點", "價格", "費用", "多少錢", "服務", "項目"],
+      "response": "我來幫您查詢相關資訊...\n\n📍 地點：台北市信義區信義路五段 100 號 5 樓\n⏰ 營業時間：\n   • 週一至週五：09:00-18:00\n   • 週六：09:00-14:00\n   • 週日：休診\n\n💳 服務與價格：\n   • 洗牙：NT$500\n   • 補牙：NT$1,500\n   • 根管治療：NT$5,000\n   • 植牙：NT$25,000\n   • 美白：NT$3,000\n\n還有其他問題嗎？"
+    },
+    "complaint_intent": {
+      "trigger_keywords": ["投訴", "問題", "不滿", "退款", "服務不好"],
+      "response": "感謝您的反饋。我非常重視您的意見，現在將您轉接給專人處理。\n\n我們的客服團隊會在 2-5 分鐘內與您聯絡。\n\n如有急事，也可直接撥打：02-1234-5678 ext. 100"
+    },
+    "closing": {
+      "trigger_keywords": ["謝謝", "再見", "bye", "thanks", "不用了"],
+      "response": "感謝您的光臨！😊\n\n如有任何問題，歡迎隨時聯絡我們：\n📞 02-1234-5678\n💬 LINE：@smile-dental\n\n祝您有美好的一天！"
+    }
+  },
+
+  "ai_prompts": {
+    "system_prompt": "你是笑容牙醫診所的 AI 客服助手。你的職責是：\n1. 理解患者的牙科需求\n2. 提供準確的診所資訊與服務說明\n3. 協助患者預約掛號\n4. 在必要時轉接人工客服或醫師\n\n重要指示：\n- 始終保持禮貌與同情心\n- 不提供醫療診斷或建議（除非由醫師授權）\n- 如果不確定，請誠實說明並轉接人工\n- 遵守診所規則與患者隱私政策\n- 使用繁體中文與友善的語氣\n- 在適當時機提供診所的聯絡資訊",
+    
+    "intent_extraction_prompt": "分析以下患者訊息，並提取以下資訊（以 JSON 格式返回）：\n- intent: 意圖類型 (booking|query|complaint|greeting|other)\n- service: 服務類型（如果有）\n- preferred_date: 偏好日期（如果有）\n- preferred_time: 偏好時間（如果有）\n- customer_name: 患者名稱（如果有）\n- customer_phone: 患者電話（如果有）\n- medical_notes: 醫療相關備註（如果有）\n- confidence: 信心度 (0-1)\n\n患者訊息：{message}",
+    
+    "availability_check_prompt": "根據以下資訊，檢查笑容牙醫診所的可用預約時段：\n- 服務: {service_name}\n- 服務時長: {duration} 分鐘\n- 偏好日期: {preferred_date}\n- 偏好時間: {preferred_time}\n- 營業時間: {operating_hours}\n- 已預約時段: {booked_slots}\n- 醫師檔期: {doctor_schedule}\n\n請返回 3-5 個可用時段的建議，並考慮患者的偏好。",
+    
+    "confirmation_prompt": "生成一個預約確認訊息，包含以下資訊：\n- 患者名稱: {customer_name}\n- 服務: {service_name}\n- 日期: {booking_date}\n- 時間: {booking_time}\n- 醫師: {doctor_name}\n- 診所地點: {location}\n- 提醒事項: {reminders}\n\n訊息應該友善、清晰、專業，並包含所有重要資訊與提醒。"
+  },
+
+  "templates": {
+    "booking_confirmation": "✅ 預約成功！\n\n📋 預約詳情：\n• 服務：{service_name}\n• 日期：{booking_date} ({day_of_week})\n• 時間：{booking_time}-{booking_end_time}\n• 醫師/衛生員：{staff_name}\n• 地點：笑容牙醫診所\n\n📍 診所地址：台北市信義區信義路五段 100 號 5 樓\n\n⏰ 提醒：\n• 請於預約時間前 10 分鐘到達\n• 如需取消，請提前 24 小時通知\n• 聯絡電話：02-1234-5678\n\n感謝您的預約！",
+    
+    "booking_reminder": "📢 預約提醒\n\n您在笑容牙醫診所的預約即將開始！\n\n⏰ 時間：{booking_time}\n🦷 服務：{service_name}\n👨‍⚕️ 醫師：{staff_name}\n📍 地點：信義路五段 100 號 5 樓\n\n💡 溫馨提醒：\n• 請準時到達\n• 帶上健保卡\n• 如需改期或取消，請立即回覆\n\n期待為您服務！",
+    
+    "no_availability": "抱歉，{preferred_date} {preferred_time} 的 {service_name} 無可用時段。\n\n建議時段：\n• {alternative_time_1}\n• {alternative_time_2}\n• {alternative_time_3}\n\n是否接受其中一個時段？或需要其他日期的建議？",
+    
+    "transfer_to_human": "感謝您的耐心。我現在將您轉接給我們的客服人員。\n\n⏳ 預計等待時間：2-5 分鐘\n\n客服人員將很快與您聯絡。如有急事，也可直接撥打：02-1234-5678"
+  },
+
+  "analytics": {
+    "track_conversation_count": true,
+    "track_booking_success_rate": true,
+    "track_customer_satisfaction": true,
+    "track_transfer_rate": true,
+    "track_average_response_time": true,
+    "track_popular_services": true,
+    "track_peak_booking_times": true
+  }
+}

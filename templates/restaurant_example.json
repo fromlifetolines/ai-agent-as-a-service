@@ -1,0 +1,371 @@
+{
+  "_metadata": {
+    "version": "1.0",
+    "template_type": "restaurant",
+    "industry": "restaurant",
+    "created_date": "2026-04-15",
+    "description": "餐廳專用 AI 客服知識庫範例"
+  },
+
+  "business_info": {
+    "name": "美食家日式料理",
+    "type": "restaurant",
+    "description": "提供道地日式料理與創意日本菜，主打新鮮食材與精緻擺盤",
+    "phone": "02-8765-4321",
+    "email": "booking@gourmet-japan.com.tw",
+    "address": "台北市大安區信義路二段 200 號 2 樓",
+    "website": "https://gourmet-japan.com.tw",
+    "social_media": {
+      "line": "@gourmet-japan",
+      "facebook": "https://facebook.com/gourmet-japan",
+      "instagram": "@gourmet.japan.taipei"
+    },
+    "operating_hours": {
+      "monday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false },
+      "tuesday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false },
+      "wednesday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false },
+      "thursday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false },
+      "friday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false },
+      "saturday": { "open": "17:00", "close": "23:00", "lunch": false, "dinner": true },
+      "sunday": { "open": "11:30", "close": "14:00", "lunch": true, "dinner": false }
+    }
+  },
+
+  "services": [
+    {
+      "id": "dine_in",
+      "name": "內用",
+      "category": "dining_option",
+      "duration_minutes": 90,
+      "price": 0,
+      "currency": "TWD",
+      "description": "在餐廳享受舒適的用餐環境",
+      "required_staff_roles": ["server"],
+      "max_clients_per_slot": 8,
+      "advance_booking_required_hours": 2,
+      "cancellation_allowed_hours_before": 24,
+      "tags": ["popular"]
+    },
+    {
+      "id": "takeout",
+      "name": "外帶",
+      "category": "dining_option",
+      "duration_minutes": 15,
+      "price": 0,
+      "currency": "TWD",
+      "description": "快速外帶服務，保持食物新鮮",
+      "required_staff_roles": ["kitchen_staff"],
+      "max_clients_per_slot": 10,
+      "advance_booking_required_hours": 1,
+      "cancellation_allowed_hours_before": 1,
+      "tags": ["convenient"]
+    },
+    {
+      "id": "private_room",
+      "name": "包廂預約",
+      "category": "special_event",
+      "duration_minutes": 120,
+      "price": 5000,
+      "currency": "TWD",
+      "description": "適合聚餐、商務會議、慶祝活動的私人包廂",
+      "required_staff_roles": ["manager", "server"],
+      "max_clients_per_slot": 20,
+      "advance_booking_required_hours": 48,
+      "cancellation_allowed_hours_before": 72,
+      "tags": ["premium", "event"]
+    },
+    {
+      "id": "catering",
+      "name": "外燴服務",
+      "category": "special_service",
+      "duration_minutes": 180,
+      "price": 15000,
+      "currency": "TWD",
+      "description": "到府外燴服務，適合各式活動",
+      "required_staff_roles": ["chef", "server"],
+      "max_clients_per_slot": 1,
+      "advance_booking_required_hours": 168,
+      "cancellation_allowed_hours_before": 168,
+      "tags": ["premium", "special"]
+    }
+  ],
+
+  "menu": {
+    "categories": [
+      {
+        "id": "appetizers",
+        "name": "開胃菜",
+        "items": [
+          {
+            "name": "毛豆",
+            "price": 150,
+            "description": "新鮮毛豆，灑上海鹽"
+          },
+          {
+            "name": "醃漬小黃瓜",
+            "price": 120,
+            "description": "爽脆開胃"
+          }
+        ]
+      },
+      {
+        "id": "sushi",
+        "name": "壽司",
+        "items": [
+          {
+            "name": "鮪魚握壽司",
+            "price": 80,
+            "description": "新鮮中等脂肪鮪魚"
+          },
+          {
+            "name": "鮭魚握壽司",
+            "price": 80,
+            "description": "挪威鮭魚"
+          }
+        ]
+      },
+      {
+        "id": "ramen",
+        "name": "拉麵",
+        "items": [
+          {
+            "name": "豚骨拉麵",
+            "price": 280,
+            "description": "濃郁豚骨湯頭，配叉燒與溫泉蛋"
+          },
+          {
+            "name": "醬油拉麵",
+            "price": 260,
+            "description": "經典醬油湯頭"
+          }
+        ]
+      }
+    ]
+  },
+
+  "staff": [
+    {
+      "id": "manager_tanaka",
+      "name": "田中經理",
+      "title": "餐廳經理",
+      "specialties": ["reservation", "vip_service", "event_planning"],
+      "bio": "擁有 10 年日式餐廳管理經驗",
+      "phone": "02-8765-4321 ext. 101",
+      "available_hours": {
+        "monday": ["11:30-14:00"],
+        "tuesday": ["11:30-14:00"],
+        "wednesday": ["11:30-14:00"],
+        "thursday": ["11:30-14:00"],
+        "friday": ["11:30-14:00"],
+        "saturday": ["17:00-23:00"],
+        "sunday": ["11:30-14:00"]
+      },
+      "max_clients_per_day": 50
+    },
+    {
+      "id": "chef_yamamoto",
+      "name": "山本主廚",
+      "title": "日式料理主廚",
+      "specialties": ["sushi", "ramen", "special_dishes"],
+      "bio": "東京培訓，擅長傳統日式料理",
+      "phone": "02-8765-4321 ext. 102",
+      "available_hours": {
+        "monday": ["11:30-14:00"],
+        "tuesday": ["11:30-14:00"],
+        "wednesday": ["11:30-14:00"],
+        "thursday": ["11:30-14:00"],
+        "friday": ["11:30-14:00"],
+        "saturday": ["17:00-23:00"],
+        "sunday": ["11:30-14:00"]
+      },
+      "max_clients_per_day": 100
+    }
+  ],
+
+  "faq": [
+    {
+      "id": "faq_001",
+      "question": "可以預約位置嗎？",
+      "answer": "可以。我們接受電話或 LINE 預約。建議提前 2 小時預約以確保有位置。",
+      "category": "booking",
+      "priority": 1,
+      "keywords": ["預約", "位置", "訂位", "預訂"]
+    },
+    {
+      "id": "faq_002",
+      "question": "有外帶服務嗎？",
+      "answer": "有的。我們提供外帶服務，建議提前 30 分鐘訂購。外帶可享 10% 折扣。",
+      "category": "service",
+      "priority": 1,
+      "keywords": ["外帶", "打包", "帶走"]
+    },
+    {
+      "id": "faq_003",
+      "question": "最低消費是多少？",
+      "answer": "內用每人最低消費 NT$300，包廂最低消費 NT$5,000。",
+      "category": "payment",
+      "priority": 1,
+      "keywords": ["最低消費", "消費", "價格"]
+    },
+    {
+      "id": "faq_004",
+      "question": "可以刷卡嗎？",
+      "answer": "可以。我們接受現金、信用卡（VISA、Mastercard、JCB）、Apple Pay 與 LINE Pay。",
+      "category": "payment",
+      "priority": 1,
+      "keywords": ["刷卡", "付款", "支付"]
+    },
+    {
+      "id": "faq_005",
+      "question": "有素食選項嗎？",
+      "answer": "有的。我們提供素食壽司、素食拉麵等選項。預訂時請告知素食需求。",
+      "category": "menu",
+      "priority": 2,
+      "keywords": ["素食", "素", "不吃肉"]
+    },
+    {
+      "id": "faq_006",
+      "question": "可以帶小孩來嗎？",
+      "answer": "可以。我們有兒童菜單與兒童座椅。建議預訂時告知有小孩同行。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["小孩", "兒童", "小朋友", "帶"]
+    },
+    {
+      "id": "faq_007",
+      "question": "有停車位嗎？",
+      "answer": "我們位於商業大樓，大樓有停車場。首 2 小時免費，超過部分按大樓費率計算。",
+      "category": "other",
+      "priority": 2,
+      "keywords": ["停車", "停車位", "交通"]
+    },
+    {
+      "id": "faq_008",
+      "question": "可以舉辦私人活動嗎？",
+      "answer": "可以。我們有包廂與外燴服務，適合各式活動。詳情請來電或 LINE 諮詢。",
+      "category": "service",
+      "priority": 2,
+      "keywords": ["包廂", "活動", "聚餐", "慶祝"]
+    }
+  ],
+
+  "business_rules": {
+    "booking": {
+      "min_advance_notice_hours": 2,
+      "max_advance_booking_days": 30,
+      "max_concurrent_bookings_per_customer": 1,
+      "allow_same_day_booking": true,
+      "require_customer_confirmation": true,
+      "confirmation_message": "感謝您的預約，我們已為您保留位置。請於預約時間準時到達。",
+      "cancellation_policy": "預約前 24 小時可免費取消；24 小時內取消需收取訂金 50%",
+      "reschedule_policy": "可隨時改期，需提前 24 小時通知",
+      "no_show_policy": "無故缺席將收取全額訂金"
+    },
+    "pricing": {
+      "currency": "TWD",
+      "accept_payment_methods": ["cash", "credit_card", "line_pay", "apple_pay"],
+      "first_time_discount_percent": 0,
+      "package_discounts": [
+        {
+          "name": "外帶折扣",
+          "discount_percent": 10,
+          "conditions": "僅限外帶訂單"
+        },
+        {
+          "name": "團體預約折扣",
+          "discount_percent": 5,
+          "conditions": "8 人以上"
+        }
+      ],
+      "seasonal_promotions": [
+        {
+          "name": "春季套餐優惠",
+          "discount_percent": 15,
+          "start_date": "2026-03-01",
+          "end_date": "2026-05-31"
+        }
+      ]
+    },
+    "escalation": {
+      "transfer_keywords": ["投訴", "問題", "不滿", "退款", "幫我", "人工", "經理"],
+      "transfer_message": "感謝您的反饋，我現在將您轉接給經理處理。",
+      "transfer_to_department": "management",
+      "max_wait_time_seconds": 300,
+      "escalation_phone": "02-8765-4321 ext. 101"
+    },
+    "customer_data": {
+      "collect_phone": true,
+      "collect_email": true,
+      "collect_name": true,
+      "collect_notes": true,
+      "collect_dietary_restrictions": true,
+      "collect_party_size": true,
+      "gdpr_compliant": true
+    },
+    "restaurant_specific": {
+      "track_table_availability": true,
+      "send_reservation_reminders": true,
+      "track_average_dining_time": true,
+      "recommend_popular_dishes": true,
+      "track_no_shows": true
+    }
+  },
+
+  "conversation_flows": {
+    "greeting": {
+      "trigger_keywords": ["你好", "嗨", "hi", "hello", "早安", "午安", "晚安"],
+      "response": "您好！歡迎來到美食家日式料理 🍜\n\n我是 AI 客服助手，可以幫您：\n• 訂位預約\n• 查詢菜單與價格\n• 了解營業時間\n• 回答常見問題\n\n請問有什麼我可以幫助的嗎？"
+    },
+    "booking_intent": {
+      "trigger_keywords": ["預約", "訂位", "預訂", "想吃", "要吃", "聚餐"],
+      "response": "好的，我幫您預約。請告訴我：\n\n1️⃣ 用餐類型：\n   • 內用\n   • 外帶\n   • 包廂預約\n\n2️⃣ 預約日期與時間\n\n3️⃣ 用餐人數\n\n4️⃣ 您的名字與電話"
+    },
+    "menu_query": {
+      "trigger_keywords": ["菜單", "有什麼", "推薦", "什麼好吃", "價格", "費用"],
+      "response": "我們的特色菜色包括：\n\n🍣 壽司系列\n   • 鮪魚握壽司 NT$80\n   • 鮭魚握壽司 NT$80\n\n🍜 拉麵系列\n   • 豚骨拉麵 NT$280\n   • 醬油拉麵 NT$260\n\n🍽️ 開胃菜\n   • 毛豆 NT$150\n   • 醃漬小黃瓜 NT$120\n\n詳細菜單請查看我們的網站或 Instagram。\n\n有特別想吃的嗎？"
+    },
+    "operating_hours": {
+      "trigger_keywords": ["營業", "時間", "幾點", "開門", "關門"],
+      "response": "美食家日式料理的營業時間：\n\n📅 週一至週五（午餐）\n   11:30 - 14:00\n\n📅 週六（晚餐）\n   17:00 - 23:00\n\n📅 週日（午餐）\n   11:30 - 14:00\n\n🚫 週一至週五無晚餐服務\n\n有其他問題嗎？"
+    },
+    "complaint_intent": {
+      "trigger_keywords": ["投訴", "問題", "不滿", "退款", "服務不好"],
+      "response": "感謝您的反饋。我非常重視您的意見，現在將您轉接給經理處理。\n\n⏳ 預計等待時間：2-5 分鐘\n\n經理將很快與您聯絡。如有急事，也可直接撥打：02-8765-4321 ext. 101"
+    },
+    "closing": {
+      "trigger_keywords": ["謝謝", "再見", "bye", "thanks", "不用了"],
+      "response": "感謝您的光臨！😊\n\n如有任何問題，歡迎隨時聯絡我們：\n📞 02-8765-4321\n💬 LINE：@gourmet-japan\n🌐 網站：gourmet-japan.com.tw\n\n期待為您服務！"
+    }
+  },
+
+  "ai_prompts": {
+    "system_prompt": "你是美食家日式料理的 AI 客服助手。你的職責是：\n1. 理解客人的用餐需求\n2. 提供準確的餐廳資訊與菜單說明\n3. 協助客人預約位置\n4. 在必要時轉接人工客服或經理\n\n重要指示：\n- 始終保持禮貌與熱情\n- 推薦特色菜色與套餐\n- 如果不確定，請誠實說明並轉接人工\n- 遵守餐廳規則與客人隱私政策\n- 使用繁體中文與友善的語氣",
+    
+    "intent_extraction_prompt": "分析以下客人訊息，並提取以下資訊（以 JSON 格式返回）：\n- intent: 意圖類型 (booking|menu_query|operating_hours|complaint|greeting|other)\n- dining_type: 用餐類型（如果有）(dine_in|takeout|private_room|catering)\n- preferred_date: 偏好日期（如果有）\n- preferred_time: 偏好時間（如果有）\n- party_size: 用餐人數（如果有）\n- customer_name: 客人名稱（如果有）\n- customer_phone: 客人電話（如果有）\n- dietary_restrictions: 飲食限制（如果有）\n- confidence: 信心度 (0-1)\n\n客人訊息：{message}",
+    
+    "availability_check_prompt": "根據以下資訊，檢查美食家日式料理的可用預約時段：\n- 用餐類型: {dining_type}\n- 偏好日期: {preferred_date}\n- 偏好時間: {preferred_time}\n- 用餐人數: {party_size}\n- 營業時間: {operating_hours}\n- 已預約時段: {booked_slots}\n- 可用座位: {available_seats}\n\n請返回 3-5 個可用時段的建議。",
+    
+    "confirmation_prompt": "生成一個預約確認訊息，包含以下資訊：\n- 客人名稱: {customer_name}\n- 用餐類型: {dining_type}\n- 日期: {booking_date}\n- 時間: {booking_time}\n- 人數: {party_size}\n- 餐廳地點: {location}\n- 特殊需求: {special_requests}\n\n訊息應該友善、清晰、專業，並包含所有重要資訊與提醒。"
+  },
+
+  "templates": {
+    "booking_confirmation": "✅ 預約成功！\n\n📋 預約詳情：\n• 用餐類型：{dining_type}\n• 日期：{booking_date} ({day_of_week})\n• 時間：{booking_time}\n• 人數：{party_size} 人\n• 名字：{customer_name}\n\n📍 餐廳地址：台北市大安區信義路二段 200 號 2 樓\n\n⏰ 提醒：\n• 請於預約時間準時到達\n• 如需取消，請提前 24 小時通知\n• 聯絡電話：02-8765-4321\n\n感謝您的預約！",
+    
+    "booking_reminder": "📢 預約提醒\n\n您在美食家日式料理的預約即將開始！\n\n⏰ 時間：{booking_time}\n👥 人數：{party_size} 人\n📍 地點：信義路二段 200 號 2 樓\n\n💡 溫馨提醒：\n• 請準時到達\n• 如需改期或取消，請立即回覆\n\n期待為您服務！🍜",
+    
+    "no_availability": "抱歉，{preferred_date} {preferred_time} 無可用位置。\n\n建議時段：\n• {alternative_time_1}\n• {alternative_time_2}\n• {alternative_time_3}\n\n是否接受其中一個時段？或需要其他日期的建議？",
+    
+    "transfer_to_human": "感謝您的耐心。我現在將您轉接給經理處理。\n\n⏳ 預計等待時間：2-5 分鐘\n\n經理將很快與您聯絡。"
+  },
+
+  "analytics": {
+    "track_conversation_count": true,
+    "track_booking_success_rate": true,
+    "track_customer_satisfaction": true,
+    "track_transfer_rate": true,
+    "track_average_response_time": true,
+    "track_popular_dishes": true,
+    "track_peak_booking_times": true,
+    "track_no_shows": true
+  }
+}

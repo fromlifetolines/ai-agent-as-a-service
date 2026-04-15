@@ -1,0 +1,41 @@
+graph TD
+    KB["Knowledge Base (JSON)"]
+    
+    KB --> BIZ["Business Info"]
+    KB --> SVC["Services"]
+    KB --> FAQ["FAQ"]
+    KB --> STAFF["Staff"]
+    KB --> RULES["Business Rules"]
+    
+    BIZ --> BIZ1["Business Name"]
+    BIZ --> BIZ2["Business Type<br/>(dental/restaurant/salon)"]
+    BIZ --> BIZ3["Operating Hours<br/>(by day)"]
+    BIZ --> BIZ4["Contact Info"]
+    BIZ --> BIZ5["Location"]
+    
+    SVC --> SVC1["Service ID"]
+    SVC --> SVC2["Service Name"]
+    SVC --> SVC3["Duration<br/>(minutes)"]
+    SVC --> SVC4["Price"]
+    SVC --> SVC5["Required Staff"]
+    SVC --> SVC6["Description"]
+    
+    FAQ --> FAQ1["Question"]
+    FAQ --> FAQ2["Answer"]
+    FAQ --> FAQ3["Category<br/>(booking/payment/etc)"]
+    
+    STAFF --> STAFF1["Staff Name"]
+    STAFF --> STAFF2["Specialties"]
+    STAFF --> STAFF3["Available Hours"]
+    STAFF --> STAFF4["Max Clients/Day"]
+    
+    RULES --> RULES1["Booking Rules<br/>(min notice, cancellation)"]
+    RULES --> RULES2["Pricing Rules<br/>(discounts, packages)"]
+    RULES --> RULES3["Escalation Rules<br/>(when to transfer)"]
+    
+    style KB fill:#6D28D9,stroke:#4C1D95,color:#fff
+    style BIZ fill:#10B981,stroke:#059669,color:#fff
+    style SVC fill:#3B82F6,stroke:#1D4ED8,color:#fff
+    style FAQ fill:#F59E0B,stroke:#D97706,color:#fff
+    style STAFF fill:#EC4899,stroke:#BE185D,color:#fff
+    style RULES fill:#8B5CF6,stroke:#6D28D9,color:#fff
